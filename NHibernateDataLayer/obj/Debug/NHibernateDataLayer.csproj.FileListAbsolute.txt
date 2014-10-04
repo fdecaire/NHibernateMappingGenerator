@@ -1,0 +1,15 @@
+c:\users\frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\NHibernateDataLayer.dll
+c:\users\frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\NHibernateDataLayer.pdb
+c:\users\frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\NHibernateDataLayer\obj\Debug\NHibernateDataLayer.dll
+c:\users\frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\NHibernateDataLayer\obj\Debug\NHibernateDataLayer.pdb
+c:\users\frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\NHibernateDataLayer\obj\Debug\NHibernateDataLayer.csprojResolveAssemblyReference.cache
+c:\users\frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\FluentNHibernate.dll
+c:\users\frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\Iesi.Collections.dll
+c:\users\frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\NHibernate.dll
+c:\users\frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\FluentNHibernate.xml
+c:\users\frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\Iesi.Collections.xml
+c:\users\frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\NHibernate.xml
+c:\users\frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\Helpers.dll
+c:\users\frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\Helpers.pdb
+C:\Users\Frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\Newtonsoft.Json.xml

@@ -1,0 +1,7 @@
+c:\users\frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\Helpers\bin\Debug\Helpers.dll
+c:\users\frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\Helpers\bin\Debug\Helpers.pdb
+c:\users\frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\Helpers\obj\Debug\Helpers.dll
+c:\users\frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\Helpers\obj\Debug\Helpers.pdb
+C:\Users\Frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\Helpers\obj\Debug\Helpers.csprojResolveAssemblyReference.cache
+C:\Users\Frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\Helpers\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\Helpers\bin\Debug\Newtonsoft.Json.xml

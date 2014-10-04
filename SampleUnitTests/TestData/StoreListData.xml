@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<database name="sampledata">
+		<store>
+			<id>1</id>
+			<name>Test Store</name>
+			<address>123 Main St</address>
+			<city>Baltimore</city>
+			<state>MD</state>
+			<zip>12345</zip>
+			<testfield>This is a test comment</testfield>
+		</store>
+		<store>
+			<id>2</id>
+			<name>Next Store</name>
+			<address>123 Main St</address>
+			<city>Detroit</city>
+			<state>MI</state>
+			<zip>12345</zip>
+			<testfield>This is a test comment</testfield>
+		</store>
+		<producttype>
+			<id>1</id>
+			<description>Toys</description>
+		</producttype>
+		<producttype>
+			<id>5</id>
+			<description>Food</description>
+		</producttype>
+		<producttype>
+			<id>6</id>
+			<description>Car</description>
+		</producttype>
+		<product>
+			<productid>3</productid>
+			<producttype>1</producttype>
+			<name>Matchbox car</name>
+			<store>1</store>
+		</product>
+		<product>
+			<productid>4</productid>
+			<producttype>1</producttype>
+			<name>Barbie Doll</name>
+			<store>1</store>
+		</product>
+	</database>
+</data>

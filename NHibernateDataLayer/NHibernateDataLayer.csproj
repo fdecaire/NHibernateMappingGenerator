@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1EDBE84F-6E1B-4ADD-8763-C23370CD0B3B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NHibernateDataLayer</RootNamespace>
+    <AssemblyName>NHibernateDataLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FluentNHibernate, Version=1.4.0.0, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>3rdPartyDLLs\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>3rdPartyDLLs\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=3.3.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>3rdPartyDLLs\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="3rdPartyDLLs\FluentNHibernate.dll" />
+    <Content Include="3rdPartyDLLs\FluentNHibernate.XML" />
+    <Content Include="3rdPartyDLLs\Iesi.Collections.dll" />
+    <Content Include="3rdPartyDLLs\Iesi.Collections.xml" />
+    <Content Include="3rdPartyDLLs\NHibernate.dll" />
+    <Content Include="3rdPartyDLLs\NHibernate.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{5a3f967e-7d50-4080-a302-9a98f8751b79}</Project>
+      <Name>Helpers</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ItemGroup>
+    <Compile Include="sampledata\Constraints\sampledataConstraints.cs" />
+    <Compile Include="sampledata\StoredProcedures\ReadPersonNames.cs" />
+    <Compile Include="sampledata\Tables\department.cs" />
+    <Compile Include="sampledata\Tables\person.cs" />
+    <Compile Include="sampledata\Tables\Product.cs" />
+    <Compile Include="sampledata\Tables\ProductType.cs" />
+    <Compile Include="sampledata\Tables\Store.cs" />
+    <Compile Include="sampledata\Tables\student.cs" />
+    <Compile Include="sampledata\Tables\vwStoreProduct.cs" />
+    <Compile Include="sampledata\Views\vwStoreProduct.cs" />
+    <Compile Include="TestClass.cs" />
+    <Compile Include="studentdata\Tables\student.cs" />
+    <Compile Include="studentdata\Tables\StudentClass.cs" />
+    <Compile Include="studentdata\Tables\Student2Class.cs" />
+    <Compile Include="studentdata\Constraints\studentdataConstraints.cs" />
+    <Compile Include="facultydata\Tables\teacher.cs" />
+    <Compile Include="facultydata\Tables\class.cs" />
+    <Compile Include="facultydata\StoredProcedures\pSetClassForTeacher.cs" />
+    <Compile Include="facultydata\StoredProcedures\pSelectClassPerTeacher.cs" />
+    <Compile Include="facultydata\Constraints\facultydataConstraints.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="studentdata\StoredProcedures\" />
+    <Folder Include="studentdata\Views\" />
+    <Folder Include="facultydata\Constraints" />
+    <Folder Include="facultydata\StoredProcedures" />
+    <Folder Include="facultydata\Tables" />
+    <Folder Include="facultydata\Views" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,51 @@
+﻿{
+   "database": "sampledata",
+   "store": [
+      {
+         "id": "1",
+         "name": "Test Store",
+         "address": "123 Main St",
+         "city": "Baltimore",
+         "state": "MD",
+         "zip": "12345",
+         "testfield": "This is a test comment"
+      },
+      {
+         "id": "2",
+         "name": "Next Store",
+         "address": "123 Main St",
+         "city": "Detroit",
+         "state": "MI",
+         "zip": "12345",
+         "testfield": "This is a test comment"
+      }
+   ],
+   "producttype": [
+      {
+         "id": "1",
+         "description": "Toys"
+      },
+      {
+         "id": "5",
+         "description": "Food"
+      },
+      {
+         "id": "6",
+         "description": "Car"
+      }
+   ],
+   "product": [
+      {
+         "productid": "3",
+         "producttype": "1",
+         "name": "Matchbox car",
+         "store": "1"
+      },
+      {
+         "productid": "4",
+         "producttype": "1",
+         "name": "Barbie Doll",
+         "store": "1"
+      }
+   ]
+}

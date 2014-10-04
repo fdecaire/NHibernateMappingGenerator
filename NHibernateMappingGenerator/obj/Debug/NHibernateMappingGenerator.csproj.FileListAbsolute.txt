@@ -1,0 +1,13 @@
+c:\users\frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\NHibernateMappingGenerator\obj\Debug\NHibernateMappingGenerator.frmMain.resources
+c:\users\frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\NHibernateMappingGenerator\obj\Debug\NHibernateMappingGenerator.Properties.Resources.resources
+c:\users\frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\NHibernateMappingGenerator\obj\Debug\NHibernateMappingGenerator.csproj.GenerateResource.Cache
+c:\users\frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\NHibernateMappingGenerator\bin\Debug\NHibernateMappingGenerator.exe.config
+c:\users\frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\NHibernateMappingGenerator\bin\Debug\NHibernateMappingGenerator.exe
+c:\users\frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\NHibernateMappingGenerator\bin\Debug\NHibernateMappingGenerator.pdb
+c:\users\frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\NHibernateMappingGenerator\obj\Debug\NHibernateMappingGenerator.exe
+c:\users\frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\NHibernateMappingGenerator\obj\Debug\NHibernateMappingGenerator.pdb
+c:\users\frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\NHibernateMappingGenerator\obj\Debug\NHibernateMappingGenerator.csprojResolveAssemblyReference.cache
+c:\users\frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\NHibernateMappingGenerator\bin\Debug\Helpers.dll
+c:\users\frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\NHibernateMappingGenerator\bin\Debug\Helpers.pdb
+C:\Users\Frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\NHibernateMappingGenerator\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\NHibernateMappingGenerator\bin\Debug\Newtonsoft.Json.xml
