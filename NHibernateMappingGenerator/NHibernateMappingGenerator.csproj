@@ -57,6 +57,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StoredProcedureMappings.cs" />
     <Compile Include="StringHelpers.cs" />
+    <Compile Include="TableGeneratorMappings.cs" />
     <Compile Include="TableMappings.cs" />
     <Compile Include="ViewMappings.cs" />
     <EmbeddedResource Include="Main.resx">

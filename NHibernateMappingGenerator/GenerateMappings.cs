@@ -22,6 +22,7 @@ namespace NHibernateMappingGenerator
 		{
 			Setup();
 			CreateTableMappings();
+			CreateTableGeneratorMappings();
 			CreateStoredProcedureMappings();
 			CreateViewMappings();
 			CreateConstraintMappings();
@@ -87,6 +88,22 @@ namespace NHibernateMappingGenerator
 			{
 				UpdateProjectFileList("Tables", "");
 			}
+		}
+
+		private void CreateTableGeneratorMappings()
+		{
+			//TODO: these mappings will be used by unit tests to generate the tables in the database so NHibernate is not needed
+			Directory.CreateDirectory(RootDirectory + DatabaseName + "\\TableGeneratorCode");
+
+			TableGeneratorMappings tableGeneratorMappings = new TableGeneratorMappings(ConnectionString, DatabaseName);
+			string result = tableGeneratorMappings.EmitCode();
+
+			using (StreamWriter file = new StreamWriter(RootDirectory + DatabaseName + "\\TableGeneratorCode\\" + DatabaseName + "TableGeneratorCode.cs"))
+			{
+				file.Write(result);
+			}
+
+			UpdateProjectFileList("TableGeneratorCode", DatabaseName + "TableGeneratorCode");
 		}
 
 		private void UpdateProjectFileList(string tableSPView, string Name)

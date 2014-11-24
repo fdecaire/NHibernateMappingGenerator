@@ -10,6 +10,7 @@ namespace NHibernateDataLayer.sampledata.Tables
 		public virtual int ProductType { get; set; }
 		public virtual string Name { get; set; }
 		public virtual int store { get; set; }
+		public virtual System.Decimal ? Price { get; set; }
 
 		public override bool Equals(object obj)
 		{
@@ -41,6 +42,7 @@ namespace NHibernateDataLayer.sampledata.Tables
 				.KeyProperty(u => u.ProductType);
 			Map(u => u.Name).CustomSqlType("varchar (50)").Length(50).Nullable();
 			Map(u => u.store).Not.Nullable();
+			Map(u => u.Price).Nullable();
 		}
 	}
 }

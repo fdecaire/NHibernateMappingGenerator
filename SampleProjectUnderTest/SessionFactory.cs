@@ -27,11 +27,14 @@ namespace SampleProjectUnderTest
 						//TODO: refactor the exposeConfiguration() part to reduce duplicate code
 						_sessionFactory = Fluently.Configure()
 						.Database(MsSqlConfiguration.MsSql2005
-						.ConnectionString("Server=(localdb)\\sampledatatestinstance;Initial Catalog=sampledata;Integrated Security=True"))
+						.ConnectionString("Server=(localdb)\\" + UnitTestHelpers.InstanceName + ";Integrated Security=True"))
 						.Mappings(m => m.FluentMappings.Add<ProductMap>())
 						.Mappings(m => m.FluentMappings.Add<StoreMap>())
 						.Mappings(m => m.FluentMappings.Add<ProductTypeMap>())
-						.ExposeConfiguration(cfg => new SchemaExport(cfg).Create(true, true))
+						.ExposeConfiguration(config =>
+						{
+							SchemaExport schemaExport = new SchemaExport(config);
+						})
 						.BuildSessionFactory();
 					}
 					else
@@ -39,7 +42,7 @@ namespace SampleProjectUnderTest
 						// production context
 						_sessionFactory = Fluently.Configure()
 						.Database(MsSqlConfiguration.MsSql2005
-						.ConnectionString("Server=FRANK-PC\\FRANK;Initial Catalog=sampledata;Integrated Security=True"))
+						.ConnectionString("Server=YOURSQLSERVERINSTANCE;Initial Catalog=sampledata;Integrated Security=True"))
 						.Mappings(m => m.FluentMappings.Add<ProductMap>())
 						.Mappings(m => m.FluentMappings.Add<StoreMap>())
 						.Mappings(m => m.FluentMappings.Add<ProductTypeMap>())

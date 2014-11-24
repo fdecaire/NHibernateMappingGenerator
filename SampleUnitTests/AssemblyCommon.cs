@@ -18,7 +18,7 @@ namespace SampleUnitTests
 			UnitTestHelpers.Start("sampledatatestinstance", new string[] { "sampledata" });
 
 			// create tables
-			using (var db = MSSQLSessionFactory.OpenSession()) { };
+			UnitTestHelpers.CreateAllTables(NHibernateDataLayer.sampledata.TableGenerator.sampledataTables.TableList, NHibernateDataLayer.sampledata.TableGenerator.sampledataTables.DatabaseName);
 		}
 
 		[AssemblyCleanup]

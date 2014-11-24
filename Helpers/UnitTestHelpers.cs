@@ -282,6 +282,26 @@ namespace Helpers
 			}
 		}
 
+		public static void CreateAllTables(List<TableDefinition> TableList, string databaseName)
+		{
+			string connectionString = "server=(localdb)\\" + _instanceName + ";" +
+													"Trusted_Connection=yes;" +
+													"database=" + databaseName + "; " +
+													"Integrated Security=true; " +
+													"connection timeout=30";
+
+			// generate all tables listed in the table name list
+			foreach (var tableDefinition in TableList)
+			{
+				string query = tableDefinition.CreateScript;
+
+				using (var db = new ADODatabaseContext(connectionString))
+				{
+					db.ExecuteNonQuery(query);
+				}
+			}
+		}
+
 		public static void CreateConstraint(List<ConstraintDefinition> ConstraintList, string table1, string table2)
 		{
 

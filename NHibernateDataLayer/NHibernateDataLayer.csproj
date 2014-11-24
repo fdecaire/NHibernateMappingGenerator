@@ -73,16 +73,6 @@
   </Target>
   -->
   <ItemGroup>
-    <Compile Include="sampledata\Constraints\sampledataConstraints.cs" />
-    <Compile Include="sampledata\StoredProcedures\ReadPersonNames.cs" />
-    <Compile Include="sampledata\Tables\department.cs" />
-    <Compile Include="sampledata\Tables\person.cs" />
-    <Compile Include="sampledata\Tables\Product.cs" />
-    <Compile Include="sampledata\Tables\ProductType.cs" />
-    <Compile Include="sampledata\Tables\Store.cs" />
-    <Compile Include="sampledata\Tables\student.cs" />
-    <Compile Include="sampledata\Tables\vwStoreProduct.cs" />
-    <Compile Include="sampledata\Views\vwStoreProduct.cs" />
     <Compile Include="TestClass.cs" />
     <Compile Include="studentdata\Tables\student.cs" />
     <Compile Include="studentdata\Tables\StudentClass.cs" />
@@ -93,13 +83,25 @@
     <Compile Include="facultydata\StoredProcedures\pSetClassForTeacher.cs" />
     <Compile Include="facultydata\StoredProcedures\pSelectClassPerTeacher.cs" />
     <Compile Include="facultydata\Constraints\facultydataConstraints.cs" />
+    <Compile Include="sampledata\Tables\Store.cs" />
+    <Compile Include="sampledata\Tables\student.cs" />
+    <Compile Include="sampledata\Tables\ProductType.cs" />
+    <Compile Include="sampledata\Tables\Product.cs" />
+    <Compile Include="sampledata\Tables\vwStoreProduct.cs" />
+    <Compile Include="sampledata\Tables\department.cs" />
+    <Compile Include="sampledata\Tables\person.cs" />
+    <Compile Include="sampledata\TableGeneratorCode\sampledataTableGeneratorCode.cs" />
+    <Compile Include="sampledata\StoredProcedures\ReadPersonNames.cs" />
+    <Compile Include="sampledata\Views\vwStoreProduct.cs" />
+    <Compile Include="sampledata\Constraints\sampledataConstraints.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="facultydata\Views\" />
     <Folder Include="studentdata\StoredProcedures\" />
     <Folder Include="studentdata\Views\" />
-    <Folder Include="facultydata\Constraints" />
-    <Folder Include="facultydata\StoredProcedures" />
-    <Folder Include="facultydata\Tables" />
-    <Folder Include="facultydata\Views" />
+    <Folder Include="sampledata\Constraints" />
+    <Folder Include="sampledata\StoredProcedures" />
+    <Folder Include="sampledata\Tables" />
+    <Folder Include="sampledata\Views" />
   </ItemGroup>
 </Project>
