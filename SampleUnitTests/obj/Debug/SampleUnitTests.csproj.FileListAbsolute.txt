@@ -17,3 +17,10 @@ C:\Users\Frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\
 C:\Users\Frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\SampleUnitTests\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\SampleUnitTests\obj\Debug\SampleUnitTests.dll
 C:\Users\Frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\SampleUnitTests\obj\Debug\SampleUnitTests.pdb
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\SampleUnitTests\bin\Debug\EntityFramework.dll
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\SampleUnitTests\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\SampleUnitTests\bin\Debug\SampleEFProjectUnderTest.exe
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\SampleUnitTests\bin\Debug\SampleEFProjectUnderTest.pdb
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\SampleUnitTests\bin\Debug\EntityFramework.xml
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\SampleUnitTests\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\SampleUnitTests\bin\Debug\SampleUnitTests.dll.config

@@ -30,6 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>3rdPartyDLLs\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>3rdPartyDLLs\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>3rdPartyDLLs\Newtonsoft.Json.dll</HintPath>
@@ -45,6 +53,7 @@
   <ItemGroup>
     <Compile Include="ADODatabaseContext.cs" />
     <Compile Include="ConstraintDefinition.cs" />
+    <Compile Include="EFContextHelper.cs" />
     <Compile Include="FieldDefinition.cs" />
     <Compile Include="InsertQueryGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -54,6 +63,10 @@
     <Compile Include="ViewCreator.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="3rdPartyDLLs\EntityFramework.dll" />
+    <Content Include="3rdPartyDLLs\EntityFramework.SqlServer.dll" />
+    <Content Include="3rdPartyDLLs\EntityFramework.SqlServer.xml" />
+    <Content Include="3rdPartyDLLs\EntityFramework.xml" />
     <Content Include="3rdPartyDLLs\Newtonsoft.Json.dll" />
     <Content Include="3rdPartyDLLs\Newtonsoft.Json.xml" />
   </ItemGroup>

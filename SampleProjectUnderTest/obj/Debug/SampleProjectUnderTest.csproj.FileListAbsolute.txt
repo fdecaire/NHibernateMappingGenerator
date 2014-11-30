@@ -16,3 +16,5 @@ C:\Users\Frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\
 C:\Users\Frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\SampleProjectUnderTest\obj\Debug\SampleProjectUnderTest.csprojResolveAssemblyReference.cache
 C:\Users\Frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\SampleProjectUnderTest\obj\Debug\SampleProjectUnderTest.exe
 C:\Users\Frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\SampleProjectUnderTest\obj\Debug\SampleProjectUnderTest.pdb
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\SampleProjectUnderTest\bin\Debug\EntityFramework.dll
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\SampleProjectUnderTest\bin\Debug\EntityFramework.xml

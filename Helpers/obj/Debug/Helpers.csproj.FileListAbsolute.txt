@@ -5,3 +5,7 @@ c:\users\frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\
 C:\Users\Frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\Helpers\obj\Debug\Helpers.csprojResolveAssemblyReference.cache
 C:\Users\Frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\Helpers\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\Helpers\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\Helpers\bin\Debug\EntityFramework.dll
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\Helpers\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\Helpers\bin\Debug\EntityFramework.xml
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\Helpers\bin\Debug\EntityFramework.SqlServer.xml

@@ -13,3 +13,5 @@ c:\users\frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\
 c:\users\frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\Helpers.pdb
 C:\Users\Frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Frank\documents\visual studio 2012\Projects\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\EntityFramework.dll
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\EntityFramework.xml
