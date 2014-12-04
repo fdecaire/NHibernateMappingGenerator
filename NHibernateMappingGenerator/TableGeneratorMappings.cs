@@ -119,7 +119,6 @@ namespace NHibernateMappingGenerator
 								@out.Append(" (" + reader["CHARACTER_MAXIMUM_LENGTH"].ToString() + ")");
 							}
 							break;
-						case "float":
 						case "money":
 							@out.Append(" (" + reader["NUMERIC_PRECISION"].ToString());
 

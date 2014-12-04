@@ -20,7 +20,14 @@ namespace NHibernateMappingGenerator
 			_storedProcedureName = storedProcedureName;
 			_connectionString = connectionString;
 
+			NormalizeStoredProcedureName();
+
 			_code = LookupStoredProcedureCode();
+		}
+
+		private void NormalizeStoredProcedureName()
+		{
+			_storedProcedureName = _storedProcedureName.Replace("~", "_tilde_");
 		}
 
 		private string LookupStoredProcedureCode()

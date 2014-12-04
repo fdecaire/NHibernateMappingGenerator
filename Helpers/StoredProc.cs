@@ -23,9 +23,9 @@ namespace Helpers
 			using (var db = new ADODatabaseContext(connectionString))
 			{
 				// first, drop the stored procedure if it already exists
-				string sp = @"if exists (select * from sys.objects where name = N'" + Name + @"' and type = N'P') 
+				string sp = @"if exists (select * from sys.objects where name = N'" + Name.Replace("_tilde_", "~") + @"' and type = N'P') 
           begin
-            drop procedure " + Name + @"
+            drop procedure " + Name.Replace("_tilde_", "~") + @"
           end";
 				db.ExecuteNonQuery(sp);
 
