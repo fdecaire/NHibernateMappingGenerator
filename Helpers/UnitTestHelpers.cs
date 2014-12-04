@@ -116,12 +116,8 @@ namespace Helpers
 		public static void TruncateData()
 		{
 			List<string> tableList = new List<string>();
-			string connectionString = "server=(localdb)\\" + _instanceName + ";" +
-																"Trusted_Connection=yes;" +
-																"Integrated Security=true; " +
-																"connection timeout=30";
 
-			using (var db = new ADODatabaseContext(connectionString))
+			using (var db = new ADODatabaseContext("TEST"))
 			{
 				//_databaseList
 				foreach (var database in _databaseList)
@@ -140,11 +136,11 @@ namespace Helpers
 				}
 			}
 
-			using (var db = new ADODatabaseContext(connectionString))
+			using (var db = new ADODatabaseContext("TEST"))
 			{
 				foreach (var item in tableList)
 				{
-					var command = db.ExecuteNonQuery(@"TRUNCATE TABLE " + item);
+					db.ExecuteNonQuery(@"TRUNCATE TABLE " + item);
 				}
 			}
 		}
@@ -153,13 +149,7 @@ namespace Helpers
 		{
 			string databaseDirectory = Directory.GetCurrentDirectory();
 
-			string connectionString = "server=(localdb)\\" + _instanceName + ";" +
-																"Trusted_Connection=yes;" +
-																"database=master; " +
-																"Integrated Security=true; " +
-																"connection timeout=30";
-
-			using (var db = new ADODatabaseContext(connectionString))
+			using (var db = new ADODatabaseContext("TEST"))
 			{
 				db.ExecuteNonQuery(@"CREATE DATABASE [" + databaseName + @"]
           CONTAINMENT = NONE
@@ -175,13 +165,7 @@ namespace Helpers
 
 		public static void CreateStoredProcedure(Stream stream, string databaseName, string spName)
 		{
-			string connectionString = "server=(localdb)\\" + _instanceName + ";" +
-																"Trusted_Connection=yes;" +
-																"database=" + databaseName + @"; " +
-																"Integrated Security=true; " +
-																"connection timeout=30";
-
-			using (var db = new ADODatabaseContext(connectionString))
+			using (var db = new ADODatabaseContext("TEST", databaseName))
 			{
 				// first, drop the stored procedure if it already exists
 				string sp = @"if exists (select * from sys.objects where name = N'" + spName + @"' and type = N'P') 
@@ -218,12 +202,6 @@ namespace Helpers
 		{
 			string databaseName = "";
 
-			string connectionString = "server=(localdb)\\" + _instanceName + ";" +
-													"Trusted_Connection=yes;" +
-													"database=master; " +
-													"Integrated Security=true; " +
-													"connection timeout=30";
-
 			var assembly = Assembly.GetCallingAssembly();
 			var resourceName = xmlJsonDataFile;
 			using (Stream stream = assembly.GetManifestResourceStream(resourceName))
@@ -245,7 +223,7 @@ namespace Helpers
 							foreach (XElement subelement in element.Descendants("database"))
 							{
 								databaseName = subelement.Attribute("name").Value;
-								InsertQueryGenerator insertQueryGenerator = new InsertQueryGenerator(connectionString, databaseName);
+								InsertQueryGenerator insertQueryGenerator = new InsertQueryGenerator("TEST", databaseName);
 
 								var children = subelement.Elements();
 								foreach (var e in children)
@@ -270,7 +248,7 @@ namespace Helpers
 							if (attr.Name == "database")
 							{
 								databaseName = attr.Value;
-								insertQueryGenerator = new InsertQueryGenerator(connectionString, databaseName);
+								insertQueryGenerator = new InsertQueryGenerator("TEST", databaseName);
 							}
 							else if (insertQueryGenerator != null)
 							{
@@ -284,18 +262,12 @@ namespace Helpers
 
 		public static void CreateAllTables(List<TableDefinition> TableList, string databaseName)
 		{
-			string connectionString = "server=(localdb)\\" + _instanceName + ";" +
-													"Trusted_Connection=yes;" +
-													"database=" + databaseName + "; " +
-													"Integrated Security=true; " +
-													"connection timeout=30";
-
 			// generate all tables listed in the table name list
 			foreach (var tableDefinition in TableList)
 			{
 				string query = tableDefinition.CreateScript;
 
-				using (var db = new ADODatabaseContext(connectionString))
+				using (var db = new ADODatabaseContext("TEST", databaseName))
 				{
 					db.ExecuteNonQuery(query);
 				}
@@ -313,13 +285,7 @@ namespace Helpers
 				ALTER TABLE Product ADD CONSTRAINT fk_product_producttype FOREIGN KEY (producttype) REFERENCES ProductType(id)
 				*/
 
-				string connectionString = "server=(localdb)\\" + _instanceName + ";" +
-														"Trusted_Connection=yes;" +
-														"database=" + constraint.DatabaseName + "; " +
-														"Integrated Security=true; " +
-														"connection timeout=30";
-
-				using (var db = new ADODatabaseContext(connectionString))
+				using (var db = new ADODatabaseContext("TEST"))
 				{
 					db.ExecuteNonQuery(query);
 				}
@@ -330,13 +296,7 @@ namespace Helpers
 			{
 				string query = "ALTER TABLE " + constraint.FkTable + " ADD CONSTRAINT fk_" + constraint.FkTable + "_" + constraint.PkTable + " FOREIGN KEY (" + constraint.FkField + ") REFERENCES " + constraint.PkTable + "(" + constraint.PkField + ")";
 
-				string connectionString = "server=(localdb)\\" + _instanceName + ";" +
-										"Trusted_Connection=yes;" +
-										"database=" + constraint.DatabaseName + "; " +
-										"Integrated Security=true; " +
-										"connection timeout=30";
-
-				using (var db = new ADODatabaseContext(connectionString))
+				using (var db = new ADODatabaseContext("TEST", constraint.DatabaseName))
 				{
 					db.ExecuteNonQuery(query);
 				}
@@ -346,12 +306,7 @@ namespace Helpers
 		public static void ClearConstraints(List<ConstraintDefinition> ConstraintList)
 		{
 			// delete all foreign constraints in all databases
-			string connectionString = "server=(localdb)\\" + _instanceName + ";" +
-																"Trusted_Connection=yes;" +
-																"Integrated Security=true; " +
-																"connection timeout=30";
-
-			using (var db = new ADODatabaseContext(connectionString))
+			using (var db = new ADODatabaseContext("TEST"))
 			{
 				//_databaseList
 				foreach (var database in _databaseList)

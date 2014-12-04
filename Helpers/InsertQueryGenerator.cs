@@ -85,7 +85,7 @@ namespace Helpers
 
 			query += ")";
 
-			using (var db = new ADODatabaseContext(_connectionString))
+			using (var db = new ADODatabaseContext(_connectionString, _databaseName))
 			{
 				if (_HasIdentity)
 				{
@@ -129,7 +129,7 @@ namespace Helpers
 		private void BuildFieldsForTable()
 		{
 			Fields.Clear();
-			using (var db = new ADODatabaseContext(_connectionString))
+			using (var db = new ADODatabaseContext(_connectionString, _databaseName))
 			{
 				string columnQuery = "SELECT * FROM " + _databaseName + ".INFORMATION_SCHEMA.columns WHERE TABLE_NAME='" + _tableName + "'";
 				var reader = db.ReadQuery(columnQuery);
@@ -153,7 +153,7 @@ namespace Helpers
 						LOWER(b.name)='" + _tableName + @"' AND 
 						type='U'";
 
-			using (var db = new ADODatabaseContext(_connectionString))
+			using (var db = new ADODatabaseContext(_connectionString, _databaseName))
 			{
 				var reader = db.ReadQuery(query);
 				if (reader.HasRows)
