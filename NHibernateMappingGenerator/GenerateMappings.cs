@@ -22,6 +22,7 @@ namespace NHibernateMappingGenerator
 		{
 			Setup();
 			CreateTableMappings();
+			CreateWrapperMappings();
 			CreateTableGeneratorMappings();
 			CreateStoredProcedureMappings();
 			CreateViewMappings();
@@ -79,15 +80,51 @@ namespace NHibernateMappingGenerator
 				var reader = db.ReadQuery(query);
 				while (reader.Read())
 				{
+					noTablesCreated = false;
+
 					// generate any new table mappings
 					CreateTable(reader["TABLE_NAME"].ToString());
 				}
 			}
 
-			if (noTablesCreated)
+			if (!noTablesCreated)
 			{
 				UpdateProjectFileList("Tables", "");
 			}
+		}
+
+		private void CreateWrapperMappings()
+		{
+			Directory.CreateDirectory(RootDirectory + DatabaseName + "\\Wrappers");
+			WrapperMappings wrapperMappings = new WrapperMappings();
+
+
+			string query = "SELECT * FROM " + DatabaseName + ".INFORMATION_SCHEMA.tables";
+			using (StreamWriter sessionWrapperFile = new StreamWriter(RootDirectory + DatabaseName + "\\Wrappers\\SessionWrapper.cs"))
+			{
+				using (StreamWriter statelessSessionWrapperFile = new StreamWriter(RootDirectory + DatabaseName + "\\Wrappers\\StatelessSessionWrapper.cs"))
+				{
+					sessionWrapperFile.Write(wrapperMappings.EmitHeader("SessionWrapper"));
+					statelessSessionWrapperFile.Write(wrapperMappings.EmitHeader("StatelessSessionWrapper"));
+
+					using (var db = new ADODatabaseContext(ConnectionString))
+					{
+						var reader = db.ReadQuery(query);
+						while (reader.Read())
+						{
+							string tableName = reader["TABLE_NAME"].ToString();
+							sessionWrapperFile.Write(wrapperMappings.EmitCode(DatabaseName, tableName));
+							statelessSessionWrapperFile.Write(wrapperMappings.EmitCode(DatabaseName, tableName));
+						}
+					}
+
+					sessionWrapperFile.Write(wrapperMappings.EmitFooter());
+					statelessSessionWrapperFile.Write(wrapperMappings.EmitFooter());
+				}
+			}
+
+			UpdateProjectFileList("Wrappers", "SessionWrapper");
+			UpdateProjectFileList("Wrappers", "StatelessSessionWrapper");
 		}
 
 		private void CreateTableGeneratorMappings()

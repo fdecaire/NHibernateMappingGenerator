@@ -52,32 +52,32 @@ SET QUOTED_IDENTIFIER ON
 GO 
 " + _code;
 
-			@out.Append("using Helpers;\r\n");
-			@out.Append("\r\n");
-			@out.Append("namespace NHibernateDataLayer." + _databaseName + ".Views\r\n");
-			@out.Append("{\r\n");
-			@out.Append("\t// DO NOT MODIFY! This code is auto-generated.\r\n");
-			@out.Append("\tpublic partial class view" + _viewName + " : ViewCreator");
-			@out.Append("\t{\r\n");
-			@out.Append("\t\tprivate static ViewCreator _instance;\r\n");
-			@out.Append("\t\tpublic static ViewCreator Instance\r\n");
-			@out.Append("\t\t{\r\n");
-			@out.Append("\t\t\tget { return _instance ?? (_instance = new view" + _viewName + "()); }\r\n");
-			@out.Append("\t\t}\r\n");
-			@out.Append("\t\toverride public string Name\r\n");
-			@out.Append("\t\t{\r\n");
-			@out.Append("\t\t\tget { return \"" + _viewName + "\"; }\r\n");
-			@out.Append("\t\t}\r\n");
-			@out.Append("\t\toverride public string Database { get { return \"" + _databaseName + "\"; } }\r\n");
-			@out.Append("\t\toverride public string Code\r\n");
-			@out.Append("\t\t{\r\n");
-			@out.Append("\t\t\tget\r\n");
-			@out.Append("\t\t\t{\r\n");
-			@out.Append("\t\t\treturn @\"" + _code.Replace("\"", "\"\"") + "\";\r\n");
-			@out.Append("\t\t\t}\r\n");
-			@out.Append("\t\t}\r\n");
-			@out.Append("\t}\r\n");
-			@out.Append("}\r\n");
+			@out.AppendLine("using Helpers;");
+			@out.AppendLine("");
+			@out.AppendLine("namespace NHibernateDataLayer." + _databaseName + ".Views");
+			@out.AppendLine("{");
+			@out.AppendLine("\t// DO NOT MODIFY! This code is auto-generated.");
+			@out.AppendLine("\tpublic partial class view" + _viewName + " : ViewCreator");
+			@out.AppendLine("\t{");
+			@out.AppendLine("\t\tprivate static ViewCreator _instance;");
+			@out.AppendLine("\t\tpublic static ViewCreator Instance");
+			@out.AppendLine("\t\t{");
+			@out.AppendLine("\t\t\tget { return _instance ?? (_instance = new view" + _viewName + "()); }");
+			@out.AppendLine("\t\t}");
+			@out.AppendLine("\t\toverride public string Name");
+			@out.AppendLine("\t\t{");
+			@out.AppendLine("\t\t\tget { return \"" + _viewName + "\"; }");
+			@out.AppendLine("\t\t}");
+			@out.AppendLine("\t\toverride public string Database { get { return \"" + _databaseName + "\"; } }");
+			@out.AppendLine("\t\toverride public string Code");
+			@out.AppendLine("\t\t{");
+			@out.AppendLine("\t\t\tget");
+			@out.AppendLine("\t\t\t{");
+			@out.AppendLine("\t\t\treturn @\"" + _code.Replace("\"", "\"\"") + "\";");
+			@out.AppendLine("\t\t\t}");
+			@out.AppendLine("\t\t}");
+			@out.AppendLine("\t}");
+			@out.AppendLine("}");
 
 			return @out.ToString();
 		}

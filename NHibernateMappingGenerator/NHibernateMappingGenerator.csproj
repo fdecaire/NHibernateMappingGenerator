@@ -60,6 +60,7 @@
     <Compile Include="TableGeneratorMappings.cs" />
     <Compile Include="TableMappings.cs" />
     <Compile Include="ViewMappings.cs" />
+    <Compile Include="WrapperMappings.cs" />
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>

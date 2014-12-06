@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentNHibernate.Cfg;
+﻿using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
+using Helpers;
 using NHibernate;
 using NHibernate.Tool.hbm2ddl;
-using Helpers;
 using NHibernateDataLayer.sampledata.Tables;
+using NHibernateDataLayer;
 
 namespace SampleProjectUnderTest
 {
@@ -21,44 +17,31 @@ namespace SampleProjectUnderTest
 			{
 				if (_sessionFactory == null)
 				{
+					string serverInstance = "FRANK-PC\\FRANK";
 					if (UnitTestHelpers.IsInUnitTest)
 					{
-						// unit test context
-						//TODO: refactor the exposeConfiguration() part to reduce duplicate code
-						_sessionFactory = Fluently.Configure()
-						.Database(MsSqlConfiguration.MsSql2005
-						.ConnectionString("Server=(localdb)\\" + UnitTestHelpers.InstanceName + ";Integrated Security=True"))
-						.Mappings(m => m.FluentMappings.Add<ProductMap>())
-						.Mappings(m => m.FluentMappings.Add<StoreMap>())
-						.Mappings(m => m.FluentMappings.Add<ProductTypeMap>())
-						.ExposeConfiguration(config =>
-						{
-							SchemaExport schemaExport = new SchemaExport(config);
-						})
-						.BuildSessionFactory();
+						serverInstance = "(localdb)\\" + UnitTestHelpers.InstanceName;
 					}
-					else
+
+					_sessionFactory = Fluently.Configure()
+					.Database(MsSqlConfiguration.MsSql2005
+					.ConnectionString("Server=" + serverInstance + ";Initial Catalog=sampledata;Integrated Security=True"))
+					.Mappings(m => m.FluentMappings.Add<departmentMap>())
+					.Mappings(m => m.FluentMappings.Add<StoreMap>())
+					.Mappings(m => m.FluentMappings.Add<ProductMap>())
+					.Mappings(m => m.FluentMappings.Add<ProductTypeMap>())
+					.ExposeConfiguration(config =>
 					{
-						// production context
-						_sessionFactory = Fluently.Configure()
-						.Database(MsSqlConfiguration.MsSql2005
-						.ConnectionString("Server=YOURSQLSERVERINSTANCE;Initial Catalog=sampledata;Integrated Security=True"))
-						.Mappings(m => m.FluentMappings.Add<ProductMap>())
-						.Mappings(m => m.FluentMappings.Add<StoreMap>())
-						.Mappings(m => m.FluentMappings.Add<ProductTypeMap>())
-						.ExposeConfiguration(config =>
-						{
-							SchemaExport schemaExport = new SchemaExport(config);
-						})
-						.BuildSessionFactory();
-					}
+						SchemaExport schemaExport = new SchemaExport(config);
+					})
+					.BuildSessionFactory();
 				}
 				return _sessionFactory;
 			}
 		}
-		public static ISession OpenSession()
+		public static SessionWrapper OpenSession()
 		{
-			return SessionFactory.OpenSession();
+			return new SessionWrapper(SessionFactory.OpenSession());
 		}
 	}
 }

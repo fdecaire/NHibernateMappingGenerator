@@ -3,7 +3,8 @@ using Helpers;
 namespace NHibernateDataLayer.sampledata.Views
 {
 	// DO NOT MODIFY! This code is auto-generated.
-	public partial class viewvwStoreProduct : ViewCreator	{
+	public partial class viewvwStoreProduct : ViewCreator
+	{
 		private static ViewCreator _instance;
 		public static ViewCreator Instance
 		{

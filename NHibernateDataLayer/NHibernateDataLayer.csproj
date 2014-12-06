@@ -78,11 +78,8 @@
     <Compile Include="studentdata\Tables\StudentClass.cs" />
     <Compile Include="studentdata\Tables\Student2Class.cs" />
     <Compile Include="studentdata\Constraints\studentdataConstraints.cs" />
-    <Compile Include="facultydata\Tables\teacher.cs" />
-    <Compile Include="facultydata\Tables\class.cs" />
-    <Compile Include="facultydata\StoredProcedures\pSetClassForTeacher.cs" />
-    <Compile Include="facultydata\StoredProcedures\pSelectClassPerTeacher.cs" />
-    <Compile Include="facultydata\Constraints\facultydataConstraints.cs" />
+    <Compile Include="Wrappers\SessionWrapper.cs" />
+    <Compile Include="Wrappers\StatelessSessionWrapper.cs" />
     <Compile Include="sampledata\Tables\Store.cs" />
     <Compile Include="sampledata\Tables\student.cs" />
     <Compile Include="sampledata\Tables\ProductType.cs" />
@@ -90,18 +87,27 @@
     <Compile Include="sampledata\Tables\vwStoreProduct.cs" />
     <Compile Include="sampledata\Tables\department.cs" />
     <Compile Include="sampledata\Tables\person.cs" />
+    <Compile Include="sampledata\Wrappers\SessionWrapper.cs" />
+    <Compile Include="sampledata\Wrappers\StatelessSessionWrapper.cs" />
     <Compile Include="sampledata\TableGeneratorCode\sampledataTableGeneratorCode.cs" />
     <Compile Include="sampledata\StoredProcedures\ReadPersonNames.cs" />
     <Compile Include="sampledata\Views\vwStoreProduct.cs" />
     <Compile Include="sampledata\Constraints\sampledataConstraints.cs" />
+    <Compile Include="facultydata\Tables\teacher.cs" />
+    <Compile Include="facultydata\Tables\class.cs" />
+    <Compile Include="facultydata\Wrappers\SessionWrapper.cs" />
+    <Compile Include="facultydata\Wrappers\StatelessSessionWrapper.cs" />
+    <Compile Include="facultydata\TableGeneratorCode\facultydataTableGeneratorCode.cs" />
+    <Compile Include="facultydata\StoredProcedures\pSetClassForTeacher.cs" />
+    <Compile Include="facultydata\StoredProcedures\pSelectClassPerTeacher.cs" />
+    <Compile Include="facultydata\Constraints\facultydataConstraints.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="facultydata\Views\" />
     <Folder Include="studentdata\StoredProcedures\" />
     <Folder Include="studentdata\Views\" />
-    <Folder Include="sampledata\Constraints" />
-    <Folder Include="sampledata\StoredProcedures" />
-    <Folder Include="sampledata\Tables" />
-    <Folder Include="sampledata\Views" />
+    <Folder Include="facultydata\Constraints" />
+    <Folder Include="facultydata\StoredProcedures" />
+    <Folder Include="facultydata\Tables" />
+    <Folder Include="facultydata\Views" />
   </ItemGroup>
 </Project>
