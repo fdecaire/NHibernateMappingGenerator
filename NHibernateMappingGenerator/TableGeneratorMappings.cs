@@ -101,7 +101,7 @@ namespace NHibernateMappingGenerator
 						@out.Append(",");
 					}
 
-					@out.Append("[" + reader["COLUMN_NAME"].ToString() + "] ");
+					@out.Append("[" + reader["COLUMN_NAME"].ToString() + "]");
 					@out.Append("[" + reader["DATA_TYPE"].ToString() + "]");
 
 					switch (reader["DATA_TYPE"].ToString().ToLower())
@@ -116,15 +116,16 @@ namespace NHibernateMappingGenerator
 							}
 							else
 							{
-								@out.Append(" (" + reader["CHARACTER_MAXIMUM_LENGTH"].ToString() + ")");
+								@out.Append("(" + reader["CHARACTER_MAXIMUM_LENGTH"].ToString() + ")");
 							}
 							break;
+						case "numeric":
 						case "money":
-							@out.Append(" (" + reader["NUMERIC_PRECISION"].ToString());
+							@out.Append("(" + reader["NUMERIC_PRECISION"].ToString());
 
-							if (reader["NUMERIC_PRECISION_RADIX"].ToString() != "")
+							if (reader["NUMERIC_SCALE"].ToString() != "")
 							{
-								@out.Append("," + reader["NUMERIC_PRECISION_RADIX"].ToString());
+								@out.Append("," + reader["NUMERIC_SCALE"].ToString());
 							}
 
 							@out.Append(")");
