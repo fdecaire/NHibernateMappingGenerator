@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ADODatabaseContext.cs" />
+    <Compile Include="ADOParameter.cs" />
     <Compile Include="ConstraintDefinition.cs" />
     <Compile Include="EFContextHelper.cs" />
     <Compile Include="FieldDefinition.cs" />
