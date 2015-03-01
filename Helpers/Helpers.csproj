@@ -54,6 +54,7 @@
     <Compile Include="ADODatabaseContext.cs" />
     <Compile Include="ADOParameter.cs" />
     <Compile Include="ConstraintDefinition.cs" />
+    <Compile Include="DataSetHelpers.cs" />
     <Compile Include="EFContextHelper.cs" />
     <Compile Include="FieldDefinition.cs" />
     <Compile Include="InsertQueryGenerator.cs" />

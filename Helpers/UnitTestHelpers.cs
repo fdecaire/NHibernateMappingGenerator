@@ -133,6 +133,8 @@ namespace Helpers
 						string tableName = reader["table_name"].ToString();
 						tableList.Add(database + ".." + tableName);
 					}
+
+					reader.Close();
 				}
 			}
 
@@ -152,14 +154,14 @@ namespace Helpers
 			using (var db = new ADODatabaseContext("TEST"))
 			{
 				db.ExecuteNonQuery(@"CREATE DATABASE [" + databaseName + @"]
-          CONTAINMENT = NONE
-          ON  PRIMARY 
-          ( NAME = N'" + databaseName + @"', FILENAME = N'" + databaseDirectory + @"\" + databaseName +
-																							@".mdf' , SIZE = 8096KB , FILEGROWTH = 1024KB )
-          LOG ON 
-          ( NAME = N'" + databaseName + @"_log', FILENAME = N'" + databaseDirectory + @"\" + databaseName +
-																							@"_log.ldf' , SIZE = 8096KB , FILEGROWTH = 10%)
-          ");
+				  CONTAINMENT = NONE
+				  ON  PRIMARY 
+				  ( NAME = N'" + databaseName + @"', FILENAME = N'" + databaseDirectory + @"\" + databaseName +
+																									@".mdf' , SIZE = 8096KB , FILEGROWTH = 1024KB )
+				  LOG ON 
+				  ( NAME = N'" + databaseName + @"_log', FILENAME = N'" + databaseDirectory + @"\" + databaseName +
+																									@"_log.ldf' , SIZE = 8096KB , FILEGROWTH = 10%)
+				  ");
 			}
 		}
 
@@ -281,9 +283,6 @@ namespace Helpers
 			foreach (var constraint in constraintList)
 			{
 				string query = "ALTER TABLE " + constraint.FkTable + " ADD CONSTRAINT fk_" + constraint.FkTable + "_" + constraint.PkTable + " FOREIGN KEY (" + constraint.FkField + ") REFERENCES " + constraint.PkTable + "(" + constraint.PkField + ")";
-				/*
-				ALTER TABLE Product ADD CONSTRAINT fk_product_producttype FOREIGN KEY (producttype) REFERENCES ProductType(id)
-				*/
 
 				using (var db = new ADODatabaseContext("TEST"))
 				{
@@ -317,10 +316,6 @@ namespace Helpers
 					{
 						string query = "ALTER TABLE " + constraint.DatabaseName + ".." + constraint.FkTable + " DROP CONSTRAINT fk_" + constraint.FkTable + "_" + constraint.PkTable;
 						db.ExecuteNonQuery(query);
-						/*
-						ALTER TABLE Orders
-						DROP CONSTRAINT fk_PerOrders
-						*/
 					}
 				}
 			}
