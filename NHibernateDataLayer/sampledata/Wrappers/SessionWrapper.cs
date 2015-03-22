@@ -26,6 +26,10 @@ namespace NHibernateDataLayer
 		{
 			get { return _Session.Query<sampledata.Tables.vwStoreProduct>(); }
 		}
+		public IQueryable<sampledata.Tables.EmptyTable> EmptyTable
+		{
+			get { return _Session.Query<sampledata.Tables.EmptyTable>(); }
+		}
 		public IQueryable<sampledata.Tables.department> department
 		{
 			get { return _Session.Query<sampledata.Tables.department>(); }

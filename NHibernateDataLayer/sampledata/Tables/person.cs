@@ -10,7 +10,6 @@ namespace NHibernateDataLayer.sampledata.Tables
 		public virtual string first { get; set; }
 		public virtual string last { get; set; }
 		public virtual int department { get; set; }
-		public virtual string ExtraData { get; set; }
 	}
 
 	public class personMap : ClassMap<person>
@@ -22,7 +21,6 @@ namespace NHibernateDataLayer.sampledata.Tables
 			Map(u => u.first).CustomSqlType("varchar (50)").Length(50).Nullable();
 			Map(u => u.last).CustomSqlType("varchar (50)").Length(50).Nullable();
 			Map(u => u.department).Not.Nullable();
-			Map(u => u.ExtraData).CustomType("StringClob").CustomSqlType("varchar (MAX)").Length(Int32.MaxValue).Nullable();
 		}
 	}
 }

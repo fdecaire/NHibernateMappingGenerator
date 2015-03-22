@@ -12,7 +12,6 @@ namespace NHibernateDataLayer.sampledata.Tables
 		public virtual string City { get; set; }
 		public virtual string State { get; set; }
 		public virtual string Zip { get; set; }
-		public virtual string testfield { get; set; }
 	}
 
 	public class StoreMap : ClassMap<Store>
@@ -26,7 +25,6 @@ namespace NHibernateDataLayer.sampledata.Tables
 			Map(u => u.City).CustomSqlType("varchar (50)").Length(50).Nullable();
 			Map(u => u.State).CustomSqlType("varchar (50)").Length(50).Nullable();
 			Map(u => u.Zip).CustomSqlType("varchar (50)").Length(50).Nullable();
-			Map(u => u.testfield).CustomType("StringClob").CustomSqlType("text").Length(Int32.MaxValue).Nullable();
 		}
 	}
 }

@@ -187,5 +187,64 @@ namespace Helpers
 				s.WriteToServer(DetailTable);
 			}
 		}
+
+
+		public void ExecuteStoredProcedure(string queryString)
+		{
+			using (SqlCommand myCommand = new SqlCommand(queryString, _db))
+			{
+				myCommand.CommandType = CommandType.StoredProcedure;
+
+				foreach (var param in Parameters)
+				{
+					myCommand.Parameters.Add(param.Name, param.Type);
+					myCommand.Parameters[param.Name].Value = param.Value;
+				}
+
+				Parameters.Clear();
+
+				myCommand.ExecuteNonQuery();
+			}
+		}
+
+		public string ExecuteStoredProcedureWReturnValue(string queryString)
+		{
+			using (SqlCommand myCommand = new SqlCommand(queryString, _db))
+			{
+				myCommand.CommandType = CommandType.StoredProcedure;
+
+				foreach (var param in Parameters)
+				{
+					myCommand.Parameters.Add(param.Name, param.Type);
+					myCommand.Parameters[param.Name].Value = param.Value;
+				}
+
+				Parameters.Clear();
+
+				return myCommand.ExecuteScalar().ToString();
+			}
+		}
+
+		public DataSet StoredProcedureSelect(string queryString)
+		{
+			using (SqlCommand myCommand = new SqlCommand(queryString, _db))
+			{
+				myCommand.CommandType = CommandType.StoredProcedure;
+				SqlDataAdapter DA = new SqlDataAdapter(myCommand);
+				DataSet ds = new DataSet();
+
+				foreach (var param in Parameters)
+				{
+					myCommand.Parameters.Add(param.Name, param.Type);
+					myCommand.Parameters[param.Name].Value = param.Value;
+				}
+
+				Parameters.Clear();
+
+				DA.Fill(ds);
+
+				return ds;
+			}
+		}
 	}
 }

@@ -321,5 +321,26 @@ namespace Helpers
 			}
 
 		}
+
+		private void ExecuteSQLCode(string filePath)
+		{
+			using (var db = new ADODatabaseContext("TEST"))
+			{
+				var assembly = Assembly.GetCallingAssembly();
+				using (Stream stream = assembly.GetManifestResourceStream(filePath))
+				{
+					using (StreamReader reader = new StreamReader(stream))
+					{
+						string code = reader.ReadToEnd();
+						string[] TSQLcommands = Regex.Split(code, "GO");
+
+						foreach (var tsqlCommand in TSQLcommands)
+						{
+							db.ExecuteNonQuery(tsqlCommand);
+						}
+					}
+				}
+			}
+		}
 	}
 }
