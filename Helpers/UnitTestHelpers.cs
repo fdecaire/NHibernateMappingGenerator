@@ -322,7 +322,7 @@ namespace Helpers
 
 		}
 
-		public void ExecuteSQLCode(string filePath)
+		public static void ExecuteSQLCode(string filePath)
 		{
 			using (var db = new ADODatabaseContext("TEST"))
 			{
