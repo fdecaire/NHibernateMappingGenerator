@@ -336,7 +336,10 @@ namespace Helpers
 
 						foreach (var tsqlCommand in TSQLcommands)
 						{
-							db.ExecuteNonQuery(tsqlCommand);
+							if (tsqlCommand.Trim() != "")
+							{
+								db.ExecuteNonQuery(tsqlCommand);
+							}
 						}
 					}
 				}

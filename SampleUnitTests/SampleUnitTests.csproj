@@ -104,6 +104,7 @@
     <Content Include="3rdPartyDLLs\Iesi.Collections.xml" />
     <Content Include="3rdPartyDLLs\NHibernate.dll" />
     <Content Include="3rdPartyDLLs\NHibernate.xml" />
+    <EmbeddedResource Include="TestData\StoreListDataWithAttributes.xml" />
     <EmbeddedResource Include="TestData\StoreListData.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>

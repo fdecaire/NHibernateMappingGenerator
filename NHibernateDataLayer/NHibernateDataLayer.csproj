@@ -74,20 +74,8 @@
   -->
   <ItemGroup>
     <Compile Include="TestClass.cs" />
-    <Compile Include="studentdata\Tables\student.cs" />
-    <Compile Include="studentdata\Tables\StudentClass.cs" />
-    <Compile Include="studentdata\Tables\Student2Class.cs" />
-    <Compile Include="studentdata\Constraints\studentdataConstraints.cs" />
     <Compile Include="Wrappers\SessionWrapper.cs" />
     <Compile Include="Wrappers\StatelessSessionWrapper.cs" />
-    <Compile Include="facultydata\Tables\teacher.cs" />
-    <Compile Include="facultydata\Tables\class.cs" />
-    <Compile Include="facultydata\Wrappers\SessionWrapper.cs" />
-    <Compile Include="facultydata\Wrappers\StatelessSessionWrapper.cs" />
-    <Compile Include="facultydata\TableGeneratorCode\facultydataTableGeneratorCode.cs" />
-    <Compile Include="facultydata\StoredProcedures\pSetClassForTeacher.cs" />
-    <Compile Include="facultydata\StoredProcedures\pSelectClassPerTeacher.cs" />
-    <Compile Include="facultydata\Constraints\facultydataConstraints.cs" />
     <Compile Include="sampledata\Tables\Store.cs" />
     <Compile Include="sampledata\Tables\student.cs" />
     <Compile Include="sampledata\Tables\ProductType.cs" />
@@ -107,16 +95,5 @@
     <Compile Include="sampledata\Views\vwStoreProduct.cs" />
     <Compile Include="sampledata\Constraints\sampledataConstraints.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="studentdata\StoredProcedures\" />
-    <Folder Include="studentdata\Views\" />
-    <Folder Include="facultydata\Constraints" />
-    <Folder Include="facultydata\StoredProcedures" />
-    <Folder Include="facultydata\Tables" />
-    <Folder Include="facultydata\Views" />
-    <Folder Include="sampledata\Constraints" />
-    <Folder Include="sampledata\StoredProcedures" />
-    <Folder Include="sampledata\Tables" />
-    <Folder Include="sampledata\Views" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>

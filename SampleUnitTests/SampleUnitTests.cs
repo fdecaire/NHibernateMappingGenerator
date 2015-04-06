@@ -21,13 +21,13 @@ namespace SampleUnitTests
 		}
 
 		[TestMethod]
-		public void TestXMLDataFile()
+		public void TestXMLDataFileWithElements()
 		{
 			UnitTestHelpers.ReadData("SampleUnitTests.TestData.StoreListData.xml");
 
 			using (var db = MSSQLSessionFactory.OpenSession())
 			{
-				var query = (from s in db.Query<Store>() select s).ToList();
+				var query = (from s in db.Store select s).ToList();
 
 				Assert.AreEqual(2, query.Count);
 			}
@@ -40,7 +40,7 @@ namespace SampleUnitTests
 
 			using (var db = MSSQLSessionFactory.OpenSession())
 			{
-				var productTypeList = (from s in db.Query<ProductType>() orderby s.Id select s.Id).ToList();
+				var productTypeList = (from s in db.ProductType orderby s.Id select s.Id).ToList();
 
 				Assert.AreEqual(1, productTypeList[0]);
 				Assert.AreEqual(5, productTypeList[1]);
@@ -55,13 +55,13 @@ namespace SampleUnitTests
 
 			using (var db = MSSQLSessionFactory.OpenSession())
 			{
-				var storeList = (from s in db.Query<Store>() select s).ToList();
+				var storeList = (from s in db.Store select s).ToList();
 				Assert.AreEqual(2, storeList.Count);
 
-				var productTypeList = (from s in db.Query<ProductType>() select s).ToList();
+				var productTypeList = (from s in db.ProductType select s).ToList();
 				Assert.AreEqual(3, productTypeList.Count);
 
-				var productList = (from s in db.Query<Product>() select s).ToList();
+				var productList = (from s in db.Product select s).ToList();
 				Assert.AreEqual(2, productList.Count);
 			}
 		}
@@ -72,6 +72,21 @@ namespace SampleUnitTests
 			UnitTestHelpers.CreateConstraint(sampledataConstraints.ConstraintList, "product", "producttype");
 
 			UnitTestHelpers.ClearConstraints(sampledataConstraints.ConstraintList);
+		}
+
+		[TestMethod]
+		public void TestXMLDataFileWithAttributes()
+		{
+			UnitTestHelpers.ReadData("SampleUnitTests.TestData.StoreListDataWithAttributes.xml");
+
+			using (var db = MSSQLSessionFactory.OpenSession())
+			{
+				var query = (from s in db.Store select s).ToList();
+				Assert.AreEqual(5, query.Count);
+
+				var productQuery = (from s in db.Product select s).ToList();
+				Assert.AreEqual(4, productQuery.Count);
+			}
 		}
 	}
 }

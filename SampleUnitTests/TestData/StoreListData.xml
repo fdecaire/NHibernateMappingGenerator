@@ -8,7 +8,6 @@
 			<city>Baltimore</city>
 			<state>MD</state>
 			<zip>12345</zip>
-			<testfield>This is a test comment</testfield>
 		</store>
 		<store>
 			<id>2</id>
@@ -17,7 +16,6 @@
 			<city>Detroit</city>
 			<state>MI</state>
 			<zip>12345</zip>
-			<testfield>This is a test comment</testfield>
 		</store>
 		<producttype>
 			<id>1</id>

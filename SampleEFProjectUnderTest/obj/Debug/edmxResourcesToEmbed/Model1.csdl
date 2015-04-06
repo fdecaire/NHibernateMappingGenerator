@@ -39,7 +39,6 @@
     <Property Name="City" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
     <Property Name="State" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
     <Property Name="Zip" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-    <Property Name="testfield" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
   </EntityType>
   <Association Name="FK_ProductType">
     <End Role="ProductType" Type="sampledataModel.ProductType" Multiplicity="1" />

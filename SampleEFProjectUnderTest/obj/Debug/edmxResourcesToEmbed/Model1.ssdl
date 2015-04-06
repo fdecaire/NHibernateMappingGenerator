@@ -37,7 +37,6 @@
     <Property Name="City" Type="varchar" MaxLength="50" />
     <Property Name="State" Type="varchar" MaxLength="50" />
     <Property Name="Zip" Type="varchar" MaxLength="50" />
-    <Property Name="testfield" Type="text" />
   </EntityType>
   <Association Name="FK_ProductType">
     <End Role="ProductType" Type="sampledataModel.Store.ProductType" Multiplicity="1" />

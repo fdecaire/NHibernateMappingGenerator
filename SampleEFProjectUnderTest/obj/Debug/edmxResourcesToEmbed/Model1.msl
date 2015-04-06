@@ -29,7 +29,6 @@
           <ScalarProperty Name="City" ColumnName="City" />
           <ScalarProperty Name="State" ColumnName="State" />
           <ScalarProperty Name="Zip" ColumnName="Zip" />
-          <ScalarProperty Name="testfield" ColumnName="testfield" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

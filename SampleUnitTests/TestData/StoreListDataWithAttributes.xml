@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<database name="sampledata">
+		<store id="1" Name="Shop X" />
+		<store id="2" Name="East Market" />
+		<store id="3" />
+		<store id="4" Name="Toys R Us" Address="123 Main St" City="Chicago" State="IL" Zip="12345" />
+		<store id="5" Name="Target" Address="5th Ave" City="New York" State="NY" Zip="33333" />
+		<producttype Id="1" Description="Toys" />
+		<producttype Id="2" Description="Food" />
+		<producttype Id="3" Description="Appliance" />
+		<producttype Id="4" Description="Bath" />
+		<product ProductId="1" ProductType="1" Name="Matchbox Car" store="1" />
+		<product ProductId="2" ProductType="1" Name="Baby Rattle" store="1" />
+		<product ProductId="3" ProductType="1" Name="Lego Bricks" store="1" />
+		<product ProductId="4" ProductType="2" Name="Steak" store="1" />
+	</database>
+</data>

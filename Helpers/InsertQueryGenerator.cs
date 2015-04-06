@@ -13,7 +13,8 @@ namespace Helpers
 		private string _tableName;
 		private string _connectionString;
 		private string _databaseName;
-		private bool _HasIdentity;
+		private string _IdentityFieldName;
+		private bool _DataContainsPrimaryKey;
 
 		public InsertQueryGenerator(string connectionString, string databaseName)
 		{
@@ -25,23 +26,56 @@ namespace Helpers
 		{
 			_tableName = e.Name.ToString();
 
-			_HasIdentity = DoesTableHaveIdentityField();
+			_IdentityFieldName = ReadTableIdentityFieldName();
+			_DataContainsPrimaryKey = false;
 
 			BuildFieldsForTable();
 
 			// iterate through the fields and collect the data
 			var children = e.Elements();
-			foreach (var fields in children)
-			{
-				string fieldName = fields.Name.ToString().ToLower();
-				string fieldData = fields.Value;
 
-				var record = Fields.Where(x => x.Name.ToLower() == fieldName).FirstOrDefault();
-				if (record != null)
+			if (children.Count() > 0)
+			{
+				// parse the xml child elements
+				foreach (var fields in children)
 				{
-					record.Value = fieldData;
+					string fieldName = fields.Name.ToString().ToLower();
+					string fieldData = fields.Value;
+
+					var record = Fields.Where(x => x.Name.ToLower() == fieldName).FirstOrDefault();
+					if (record != null)
+					{
+						record.Value = fieldData;
+
+						if (fieldName.ToLower() == _IdentityFieldName.ToLower())
+						{
+							_DataContainsPrimaryKey = true;
+						}
+					}
 				}
 			}
+			else
+			{
+				// try to parse the xml attributes
+				var childElements = e.Attributes();
+				foreach (var fields in childElements)
+				{
+					string fieldName = fields.Name.ToString().ToLower();
+					string fieldData = fields.Value;
+
+					var record = Fields.Where(x => x.Name.ToLower() == fieldName).FirstOrDefault();
+					if (record != null)
+					{
+						record.Value = fieldData;
+
+						if (fieldName.ToLower() == _IdentityFieldName.ToLower())
+						{
+							_DataContainsPrimaryKey = true;
+						}
+					}
+				}
+			}
+
 
 			BuildQueryInsertData();
 		}
@@ -87,12 +121,12 @@ namespace Helpers
 
 			using (var db = new ADODatabaseContext(_connectionString, _databaseName))
 			{
-				if (_HasIdentity)
+				if (_DataContainsPrimaryKey)
 				{
 					db.ExecuteNonQuery("SET IDENTITY_INSERT " + _databaseName + ".." + _tableName + " ON");
 				}
 				db.ExecuteNonQuery(query);
-				if (_HasIdentity)
+				if (_DataContainsPrimaryKey)
 				{
 					db.ExecuteNonQuery("SET IDENTITY_INSERT " + _databaseName + ".." + _tableName + " OFF");
 				}
@@ -106,7 +140,8 @@ namespace Helpers
 
 			foreach (var tableItem in jsonTableData.Value)
 			{
-				_HasIdentity = DoesTableHaveIdentityField();
+				_IdentityFieldName = ReadTableIdentityFieldName();
+				_DataContainsPrimaryKey = false;
 
 				BuildFieldsForTable();
 
@@ -119,6 +154,11 @@ namespace Helpers
 					if (record != null)
 					{
 						record.Value = fieldData;
+
+						if (fieldName.ToLower() == _IdentityFieldName.ToLower())
+						{
+							_DataContainsPrimaryKey = true;
+						}
 					}
 				}
 
@@ -144,7 +184,7 @@ namespace Helpers
 			}
 		}
 
-		private bool DoesTableHaveIdentityField()
+		private string ReadTableIdentityFieldName()
 		{
 			string query = @"
 					SELECT * FROM " + _databaseName + @".sys.identity_columns AS a 
@@ -153,15 +193,15 @@ namespace Helpers
 						LOWER(b.name)='" + _tableName + @"' AND 
 						type='U'";
 
-			using (var db = new ADODatabaseContext(_connectionString, _databaseName))
+			using (var db = new ADODatabaseContext(_connectionString))
 			{
 				var reader = db.ReadQuery(query);
-				if (reader.HasRows)
+				while (reader.Read())
 				{
-					return true;
+					return reader["name"].ToString();
 				}
 			}
-			return false;
+			return "";
 		}
 	}
 }
