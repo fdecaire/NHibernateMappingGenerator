@@ -6,6 +6,6 @@ C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\
 C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\HelpersUnitTests\bin\Debug\Helpers.pdb
 C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\HelpersUnitTests\bin\Debug\EntityFramework.xml
 C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\HelpersUnitTests\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\HelpersUnitTests\obj\Debug\HelpersUnitTests.csprojResolveAssemblyReference.cache
 C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\HelpersUnitTests\obj\Debug\HelpersUnitTests.dll
 C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\HelpersUnitTests\obj\Debug\HelpersUnitTests.pdb
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\HelpersUnitTests\obj\Debug\HelpersUnitTests.csprojResolveAssemblyReference.cache

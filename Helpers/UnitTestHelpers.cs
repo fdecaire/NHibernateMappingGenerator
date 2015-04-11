@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using Newtonsoft.Json;
+using System.Xml;
 
 namespace Helpers
 {
@@ -217,20 +218,23 @@ namespace Helpers
 				{
 					using (StreamReader reader = new StreamReader(stream))
 					{
-						string xmlData = LowerCaseTags(reader.ReadToEnd());
-						XDocument document = XDocument.Parse(xmlData);
+						XmlDocument document = new XmlDocument();
+						document.LoadXml(reader.ReadToEnd());
 
-						foreach (XElement element in document.Descendants("data"))
+						foreach (XmlNode element in document.ChildNodes)
 						{
-							foreach (XElement subelement in element.Descendants("database"))
+							foreach (XmlNode subelement in element.ChildNodes)
 							{
-								databaseName = subelement.Attribute("name").Value;
-								InsertQueryGenerator insertQueryGenerator = new InsertQueryGenerator("TEST", databaseName);
-
-								var children = subelement.Elements();
-								foreach (var e in children)
+								if (subelement.Name.ToLower() == "database")
 								{
-									insertQueryGenerator.InsertData(e);
+									databaseName = subelement.Attributes["name"].Value;
+									InsertQueryGenerator insertQueryGenerator = new InsertQueryGenerator("TEST", databaseName);
+
+									var children = subelement.ChildNodes;
+									foreach (XmlNode e in children)
+									{
+										insertQueryGenerator.InsertData(e);
+									}
 								}
 							}
 						}

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using System.Xml;
 
 namespace Helpers
 {
@@ -22,7 +23,7 @@ namespace Helpers
 			_databaseName = databaseName;
 		}
 
-		public void InsertData(XElement e)
+		public void InsertData(XmlNode e)
 		{
 			_tableName = e.Name.ToString();
 
@@ -32,15 +33,15 @@ namespace Helpers
 			BuildFieldsForTable();
 
 			// iterate through the fields and collect the data
-			var children = e.Elements();
+            var children = e.ChildNodes;
 
-			if (children.Count() > 0)
+			if (children.Count > 0)
 			{
 				// parse the xml child elements
-				foreach (var fields in children)
+                foreach (XmlNode fields in children)
 				{
 					string fieldName = fields.Name.ToString().ToLower();
-					string fieldData = fields.Value;
+                    string fieldData = fields.InnerText;
 
 					var record = Fields.Where(x => x.Name.ToLower() == fieldName).FirstOrDefault();
 					if (record != null)
@@ -57,8 +58,8 @@ namespace Helpers
 			else
 			{
 				// try to parse the xml attributes
-				var childElements = e.Attributes();
-				foreach (var fields in childElements)
+				var childElements = e.Attributes;
+                foreach (XmlAttribute fields in childElements)
 				{
 					string fieldName = fields.Name.ToString().ToLower();
 					string fieldData = fields.Value;

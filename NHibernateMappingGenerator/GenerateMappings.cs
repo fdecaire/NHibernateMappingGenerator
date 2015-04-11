@@ -9,11 +9,16 @@ using System.Xml;
 
 namespace NHibernateMappingGenerator
 {
-	public class NHibernateMappings
+	public class GenerateMappings
 	{
 		public string DatabaseName { get; set; }
 		public string ConnectionString { get; set; }
 		public string RootDirectory = "..\\..\\..\\NHibernateDataLayer\\"; //TODO: need to implement a user interface to be able to change this
+		public bool GenerateNHibernateMappings { get; set; }
+		public bool GenerateViewMappings { get; set; }
+		public bool GenerateIntegrityConstraintMappings { get; set; }
+		public bool GenerateStoredProcedureMappings { get; set; }
+
 		private List<string> DeletedFiles = new List<string>();
 		private List<string> AddedFiles = new List<string>();
 		private List<string> folderList = new List<string>();
@@ -21,12 +26,30 @@ namespace NHibernateMappingGenerator
 		public void CreateMappings()
 		{
 			Setup();
-			CreateTableMappings();
-			CreateWrapperMappings();
+
+			if (GenerateNHibernateMappings)
+			{
+				CreateTableMappings(); // nhibernate tables
+				CreateWrapperMappings();
+			}
+
 			CreateTableGeneratorMappings();
-			CreateStoredProcedureMappings();
-			CreateViewMappings();
-			CreateConstraintMappings();
+
+			if (GenerateStoredProcedureMappings)
+			{
+				CreateStoredProcedureMappings();
+			}
+
+			if (GenerateViewMappings)
+			{
+				CreateViewMappings();
+			}
+
+			if (GenerateIntegrityConstraintMappings)
+			{
+				CreateConstraintMappings();
+			}
+
 			ModifyVSProjectFile();
 			DeleteUnusedFiles();
 		}

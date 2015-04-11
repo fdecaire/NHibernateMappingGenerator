@@ -73,27 +73,27 @@
   </Target>
   -->
   <ItemGroup>
+    <Compile Include="sampledata\Constraints\sampledataConstraints.cs" />
+    <Compile Include="sampledata\StoredProcedures\ExampleStoredProcedure.cs" />
+    <Compile Include="sampledata\StoredProcedures\ReadPersonAndStores.cs" />
+    <Compile Include="sampledata\StoredProcedures\ReadPersonByLastName.cs" />
+    <Compile Include="sampledata\StoredProcedures\ReadPersonNames.cs" />
+    <Compile Include="sampledata\StoredProcedures\TestProc2.cs" />
+    <Compile Include="sampledata\TableGeneratorCode\sampledataTableGeneratorCode.cs" />
+    <Compile Include="sampledata\Tables\department.cs" />
+    <Compile Include="sampledata\Tables\EmptyTable.cs" />
+    <Compile Include="sampledata\Tables\person.cs" />
+    <Compile Include="sampledata\Tables\Product.cs" />
+    <Compile Include="sampledata\Tables\ProductType.cs" />
+    <Compile Include="sampledata\Tables\Store.cs" />
+    <Compile Include="sampledata\Tables\student.cs" />
+    <Compile Include="sampledata\Tables\vwStoreProduct.cs" />
+    <Compile Include="sampledata\Views\vwStoreProduct.cs" />
+    <Compile Include="sampledata\Wrappers\SessionWrapper.cs" />
+    <Compile Include="sampledata\Wrappers\StatelessSessionWrapper.cs" />
     <Compile Include="TestClass.cs" />
     <Compile Include="Wrappers\SessionWrapper.cs" />
     <Compile Include="Wrappers\StatelessSessionWrapper.cs" />
-    <Compile Include="sampledata\Tables\Store.cs" />
-    <Compile Include="sampledata\Tables\student.cs" />
-    <Compile Include="sampledata\Tables\ProductType.cs" />
-    <Compile Include="sampledata\Tables\Product.cs" />
-    <Compile Include="sampledata\Tables\vwStoreProduct.cs" />
-    <Compile Include="sampledata\Tables\EmptyTable.cs" />
-    <Compile Include="sampledata\Tables\department.cs" />
-    <Compile Include="sampledata\Tables\person.cs" />
-    <Compile Include="sampledata\Wrappers\SessionWrapper.cs" />
-    <Compile Include="sampledata\Wrappers\StatelessSessionWrapper.cs" />
-    <Compile Include="sampledata\TableGeneratorCode\sampledataTableGeneratorCode.cs" />
-    <Compile Include="sampledata\StoredProcedures\ReadPersonNames.cs" />
-    <Compile Include="sampledata\StoredProcedures\ReadPersonByLastName.cs" />
-    <Compile Include="sampledata\StoredProcedures\TestProc2.cs" />
-    <Compile Include="sampledata\StoredProcedures\ReadPersonAndStores.cs" />
-    <Compile Include="sampledata\StoredProcedures\ExampleStoredProcedure.cs" />
-    <Compile Include="sampledata\Views\vwStoreProduct.cs" />
-    <Compile Include="sampledata\Constraints\sampledataConstraints.cs" />
   </ItemGroup>
   <ItemGroup />
 </Project>

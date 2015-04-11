@@ -28,7 +28,10 @@ namespace Helpers
 					case "xml":
 					case "ntext":
 					case "datetime":
-						_value = "'" + _value + "'";
+					case "datetime2":
+					case "date":
+					case "time":
+						_value = "'" + _value.Replace("'", "''") + "'";
 						break;
 				}
 			}
