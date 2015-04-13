@@ -94,6 +94,19 @@
     <Compile Include="TestClass.cs" />
     <Compile Include="Wrappers\SessionWrapper.cs" />
     <Compile Include="Wrappers\StatelessSessionWrapper.cs" />
+    <Compile Include="facultydata\Tables\teacher.cs" />
+    <Compile Include="facultydata\Tables\class.cs" />
+    <Compile Include="facultydata\Wrappers\SessionWrapper.cs" />
+    <Compile Include="facultydata\Wrappers\StatelessSessionWrapper.cs" />
+    <Compile Include="facultydata\TableGeneratorCode\facultydataTableGeneratorCode.cs" />
+    <Compile Include="facultydata\StoredProcedures\pSetClassForTeacher.cs" />
+    <Compile Include="facultydata\StoredProcedures\pSelectClassPerTeacher.cs" />
+    <Compile Include="facultydata\Constraints\facultydataConstraints.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="facultydata\Constraints" />
+    <Folder Include="facultydata\StoredProcedures" />
+    <Folder Include="facultydata\Tables" />
+    <Folder Include="facultydata\Views" />
+  </ItemGroup>
 </Project>
