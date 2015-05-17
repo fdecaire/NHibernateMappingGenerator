@@ -5,6 +5,11 @@ namespace Helpers
 {
 	public static class EFContextHelper
 	{
+		public static string ConnectionString(string connectionName, string databaseName)
+		{
+			return ConnectionString(connectionName, databaseName, "", "", "");
+		}
+
 		public static string ConnectionString(string connectionName, string databaseName, string modelName, string userName, string password)
 		{
 			bool integratedSecurity = (userName == "");
@@ -15,11 +20,9 @@ namespace Helpers
 				integratedSecurity = true;
 			}
 
-			return new EntityConnectionStringBuilder
+			if (modelName == "")
 			{
-				Metadata = "res://*/" + modelName + ".csdl|res://*/" + modelName + ".ssdl|res://*/" + modelName + ".msl",
-				Provider = "System.Data.SqlClient",
-				ProviderConnectionString = new SqlConnectionStringBuilder
+				return new SqlConnectionStringBuilder
 				{
 					MultipleActiveResultSets = true,
 					InitialCatalog = databaseName,
@@ -27,8 +30,25 @@ namespace Helpers
 					IntegratedSecurity = integratedSecurity,
 					UserID = userName,
 					Password = password
-				}.ConnectionString
-			}.ConnectionString;
+				}.ConnectionString;
+			}
+			else
+			{
+				return new EntityConnectionStringBuilder
+				{
+					Metadata = "res://*/" + modelName + ".csdl|res://*/" + modelName + ".ssdl|res://*/" + modelName + ".msl",
+					Provider = "System.Data.SqlClient",
+					ProviderConnectionString = new SqlConnectionStringBuilder
+					{
+						MultipleActiveResultSets = true,
+						InitialCatalog = databaseName,
+						DataSource = connectionName,
+						IntegratedSecurity = integratedSecurity,
+						UserID = userName,
+						Password = password
+					}.ConnectionString
+				}.ConnectionString;
+			}
 		}
 	}
 }
