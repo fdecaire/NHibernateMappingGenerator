@@ -1,0 +1,17 @@
+E:\GitHub\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\NHibernateDataLayer.dll
+E:\GitHub\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\NHibernateDataLayer.pdb
+E:\GitHub\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\FluentNHibernate.dll
+E:\GitHub\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\Helpers.dll
+E:\GitHub\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\Iesi.Collections.dll
+E:\GitHub\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\NHibernate.dll
+E:\GitHub\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\EntityFramework.dll
+E:\GitHub\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\Newtonsoft.Json.dll
+E:\GitHub\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\Helpers.pdb
+E:\GitHub\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\FluentNHibernate.xml
+E:\GitHub\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\Iesi.Collections.xml
+E:\GitHub\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\NHibernate.xml
+E:\GitHub\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\EntityFramework.xml
+E:\GitHub\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\Newtonsoft.Json.xml
+E:\GitHub\NHibernateMappingGenerator\NHibernateDataLayer\obj\Debug\NHibernateDataLayer.csprojResolveAssemblyReference.cache
+E:\GitHub\NHibernateMappingGenerator\NHibernateDataLayer\obj\Debug\NHibernateDataLayer.dll
+E:\GitHub\NHibernateMappingGenerator\NHibernateDataLayer\obj\Debug\NHibernateDataLayer.pdb

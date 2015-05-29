@@ -24,6 +24,7 @@ namespace NHibernateMappingGenerator
 		public string EmitCode()
 		{
 			StringBuilder result = new StringBuilder();
+			bool firstTime = true;
 
 			result.AppendLine("using System.Collections.Generic;");
 			result.AppendLine("using Helpers;");
@@ -82,7 +83,19 @@ namespace NHibernateMappingGenerator
 					string fkTableName = reader["FKTABLE_NAME"].ToString();
 					string fkColumnName = reader["FKCOLUMN_NAME"].ToString();
 
-					result.AppendLine("\t\t\tnew ConstraintDefinition { DatabaseName=\"" + _databaseName + "\", PkTable = \"" + pkTableName + "\", PkField = \"" + pkColumnName + "\", FkTable = \"" + fkTableName + "\", FkField = \"" + fkColumnName + "\" }");
+					if (!firstTime)
+					{
+						result.AppendLine(",");
+					}
+
+					firstTime = false;
+
+					result.Append("\t\t\tnew ConstraintDefinition { DatabaseName=\"" + _databaseName + "\", PkTable = \"" + pkTableName + "\", PkField = \"" + pkColumnName + "\", FkTable = \"" + fkTableName + "\", FkField = \"" + fkColumnName + "\" }");
+				}
+
+				if (!firstTime)
+				{
+					result.AppendLine("");
 				}
 			}
 

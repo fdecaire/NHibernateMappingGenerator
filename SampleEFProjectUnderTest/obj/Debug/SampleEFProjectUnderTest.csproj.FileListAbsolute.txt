@@ -1,0 +1,14 @@
+E:\GitHub\NHibernateMappingGenerator\SampleEFProjectUnderTest\bin\Debug\SampleEFProjectUnderTest.exe.config
+E:\GitHub\NHibernateMappingGenerator\SampleEFProjectUnderTest\bin\Debug\SampleEFProjectUnderTest.exe
+E:\GitHub\NHibernateMappingGenerator\SampleEFProjectUnderTest\bin\Debug\SampleEFProjectUnderTest.pdb
+E:\GitHub\NHibernateMappingGenerator\SampleEFProjectUnderTest\bin\Debug\EntityFramework.dll
+E:\GitHub\NHibernateMappingGenerator\SampleEFProjectUnderTest\bin\Debug\EntityFramework.SqlServer.dll
+E:\GitHub\NHibernateMappingGenerator\SampleEFProjectUnderTest\bin\Debug\Helpers.dll
+E:\GitHub\NHibernateMappingGenerator\SampleEFProjectUnderTest\bin\Debug\Newtonsoft.Json.dll
+E:\GitHub\NHibernateMappingGenerator\SampleEFProjectUnderTest\bin\Debug\Helpers.pdb
+E:\GitHub\NHibernateMappingGenerator\SampleEFProjectUnderTest\bin\Debug\EntityFramework.xml
+E:\GitHub\NHibernateMappingGenerator\SampleEFProjectUnderTest\bin\Debug\EntityFramework.SqlServer.xml
+E:\GitHub\NHibernateMappingGenerator\SampleEFProjectUnderTest\bin\Debug\Newtonsoft.Json.xml
+E:\GitHub\NHibernateMappingGenerator\SampleEFProjectUnderTest\obj\Debug\SampleEFProjectUnderTest.csprojResolveAssemblyReference.cache
+E:\GitHub\NHibernateMappingGenerator\SampleEFProjectUnderTest\obj\Debug\SampleEFProjectUnderTest.exe
+E:\GitHub\NHibernateMappingGenerator\SampleEFProjectUnderTest\obj\Debug\SampleEFProjectUnderTest.pdb

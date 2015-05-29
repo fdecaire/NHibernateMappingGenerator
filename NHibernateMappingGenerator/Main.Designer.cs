@@ -66,9 +66,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.lstDatabases.CheckOnClick = true;
 			this.lstDatabases.FormattingEnabled = true;
-			this.lstDatabases.Location = new System.Drawing.Point(12, 219);
+			this.lstDatabases.Location = new System.Drawing.Point(12, 249);
 			this.lstDatabases.Name = "lstDatabases";
-			this.lstDatabases.Size = new System.Drawing.Size(432, 214);
+			this.lstDatabases.Size = new System.Drawing.Size(432, 184);
 			this.lstDatabases.TabIndex = 1;
 			this.lstDatabases.SelectedValueChanged += new System.EventHandler(this.lstDatabases_SelectedValueChanged);
 			// 
@@ -90,13 +90,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.txtServerName.Location = new System.Drawing.Point(13, 40);
 			this.txtServerName.Name = "txtServerName";
-			this.txtServerName.Size = new System.Drawing.Size(350, 20);
+			this.txtServerName.Size = new System.Drawing.Size(431, 20);
 			this.txtServerName.TabIndex = 3;
 			// 
 			// btnConnect
 			// 
 			this.btnConnect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnConnect.Location = new System.Drawing.Point(369, 37);
+			this.btnConnect.Location = new System.Drawing.Point(12, 209);
 			this.btnConnect.Name = "btnConnect";
 			this.btnConnect.Size = new System.Drawing.Size(75, 26);
 			this.btnConnect.TabIndex = 4;

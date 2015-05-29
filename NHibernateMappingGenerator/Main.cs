@@ -94,7 +94,16 @@ namespace NHibernateMappingGenerator
 
 		private void btnGenerate_Click(object sender, EventArgs e)
 		{
-			string serverName = lstServers.Items[lstServers.SelectedIndex].ToString();
+			string serverName = "";
+
+			if (lstServers.SelectedIndex == -1)
+			{
+				serverName = txtServerName.Text;
+			}
+			else
+			{
+				serverName = lstServers.Items[lstServers.SelectedIndex].ToString();
+			}
 
 			foreach (int index in lstDatabases.CheckedIndices)
 			{
