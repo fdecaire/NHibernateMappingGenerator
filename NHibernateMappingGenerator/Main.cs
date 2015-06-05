@@ -69,7 +69,7 @@ namespace NHibernateMappingGenerator
 			// clear the list first
 			lstDatabases.Items.Clear();
 
-			string query = "SELECT name, database_id, create_date FROM sys.databases WHERE name NOT IN ('master','tempdb','model','msdb')";
+			string query = "SELECT name, database_id, create_date FROM sys.databases WHERE name NOT IN ('master','tempdb','model','msdb') ORDER BY name";
 
 			using (var db = new ADODatabaseContext(GetConnectionString()))
 			{

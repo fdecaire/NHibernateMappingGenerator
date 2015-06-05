@@ -28,6 +28,8 @@ namespace NHibernateMappingGenerator
 		private void NormalizeStoredProcedureName()
 		{
 			_storedProcedureName = _storedProcedureName.Replace("~", "_tilde_");
+			_storedProcedureName = _storedProcedureName.Replace("-", "_dash_");
+			_storedProcedureName = _storedProcedureName.Replace(".", "_dot_");
 		}
 
 		// this method will create an object that can be used by LINQ to access the stored procedure

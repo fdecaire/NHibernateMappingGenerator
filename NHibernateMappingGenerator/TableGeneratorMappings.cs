@@ -110,6 +110,7 @@ namespace NHibernateMappingGenerator
 						case "nchar":
 						case "varchar":
 						case "nvarchar":
+						case "varbinary":
 							if (reader["CHARACTER_MAXIMUM_LENGTH"].ToString() == "-1")
 							{
 								@out.Append("(MAX)");
