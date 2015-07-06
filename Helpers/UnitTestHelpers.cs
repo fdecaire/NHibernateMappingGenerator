@@ -124,18 +124,18 @@ namespace Helpers
 				foreach (var database in _databaseList)
 				{
 					// generate a table list
-					var reader = db.ReadQuery(@"
+					using (var reader = db.ReadQuery(@"
 						SELECT * 
 						FROM " + database + @".INFORMATION_SCHEMA.tables 
 						WHERE TABLE_TYPE = 'BASE TABLE'
-						ORDER BY TABLE_CATALOG, TABLE_SCHEMA, TABLE_NAME");
-					while (reader.Read())
+						ORDER BY TABLE_CATALOG, TABLE_SCHEMA, TABLE_NAME"))
 					{
-						string tableName = reader["table_name"].ToString();
-						tableList.Add(database + ".." + tableName);
+						while (reader.Read())
+						{
+							string tableName = reader["table_name"].ToString();
+							tableList.Add(database + ".." + tableName);
+						}
 					}
-
-					reader.Close();
 				}
 			}
 
@@ -172,9 +172,9 @@ namespace Helpers
 			{
 				// first, drop the stored procedure if it already exists
 				string sp = @"if exists (select * from sys.objects where name = N'" + spName + @"' and type = N'P') 
-          begin
-            drop procedure " + spName + @"
-          end";
+						  begin
+							drop procedure " + spName + @"
+						  end";
 				db.ExecuteNonQuery(sp);
 
 				// need to read the text file and create the stored procedure in the test database
@@ -323,7 +323,6 @@ namespace Helpers
 					}
 				}
 			}
-
 		}
 
 		public static void ExecuteSQLCode(string filePath)

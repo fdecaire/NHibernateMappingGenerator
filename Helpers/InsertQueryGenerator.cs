@@ -173,14 +173,16 @@ namespace Helpers
 			using (var db = new ADODatabaseContext(_connectionString, _databaseName))
 			{
 				string columnQuery = "SELECT * FROM " + _databaseName + ".INFORMATION_SCHEMA.columns WHERE TABLE_NAME='" + _tableName + "'";
-				var reader = db.ReadQuery(columnQuery);
-				while (reader.Read())
+				using (var reader = db.ReadQuery(columnQuery))
 				{
-					Fields.Add(new FieldDefinition
+					while (reader.Read())
 					{
-						Name = reader["COLUMN_NAME"].ToString(),
-						Type = reader["DATA_TYPE"].ToString()
-					});
+						Fields.Add(new FieldDefinition
+						{
+							Name = reader["COLUMN_NAME"].ToString(),
+							Type = reader["DATA_TYPE"].ToString()
+						});
+					}
 				}
 			}
 		}
@@ -196,10 +198,12 @@ namespace Helpers
 
 			using (var db = new ADODatabaseContext(_connectionString))
 			{
-				var reader = db.ReadQuery(query);
-				while (reader.Read())
+				using (var reader = db.ReadQuery(query))
 				{
-					return reader["name"].ToString();
+					while (reader.Read())
+					{
+						return reader["name"].ToString();
+					}
 				}
 			}
 			return "";
