@@ -1,0 +1,10 @@
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\HelperLibrary\obj\Debug\Helpers.dll
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\HelperLibrary\bin\Debug\Helpers.dll
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\HelperLibrary\bin\Debug\Helpers.pdb
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\HelperLibrary\bin\Debug\EntityFramework.dll
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\HelperLibrary\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\HelperLibrary\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\HelperLibrary\bin\Debug\EntityFramework.xml
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\HelperLibrary\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\HelperLibrary\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\HelperLibrary\obj\Debug\Helpers.pdb

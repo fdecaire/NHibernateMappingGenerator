@@ -9,7 +9,7 @@ namespace SampleProjectUnderTest
 		{
 			using (var db = MSSQLSessionFactory.OpenSession())
 			{
-				var query = (from d in db.department select d).ToList();
+				var query = (from d in db.Department select d).ToList();
 
 				foreach (var item in query)
 				{

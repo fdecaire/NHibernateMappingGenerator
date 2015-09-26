@@ -1,0 +1,54 @@
+﻿using System.Data.Entity.Core.EntityClient;
+using System.Data.SqlClient;
+
+namespace HelperLibrary
+{
+	public static class EFContextHelper
+	{
+		public static string ConnectionString(string connectionName, string databaseName)
+		{
+			return ConnectionString(connectionName, databaseName, "", "", "");
+		}
+
+		public static string ConnectionString(string connectionName, string databaseName, string modelName, string userName, string password)
+		{
+			bool integratedSecurity = (userName == "");
+
+			if (UnitTestHelpers.IsInUnitTest)
+			{
+				connectionName = "(localdb)\\" + UnitTestHelpers.InstanceName;
+				integratedSecurity = true;
+			}
+
+			if (modelName == "")
+			{
+				return new SqlConnectionStringBuilder
+				{
+					MultipleActiveResultSets = true,
+					InitialCatalog = databaseName,
+					DataSource = connectionName,
+					IntegratedSecurity = integratedSecurity,
+					UserID = userName,
+					Password = password
+				}.ConnectionString;
+			}
+			else
+			{
+				return new EntityConnectionStringBuilder
+				{
+					Metadata = "res://*/" + modelName + ".csdl|res://*/" + modelName + ".ssdl|res://*/" + modelName + ".msl",
+					Provider = "System.Data.SqlClient",
+					ProviderConnectionString = new SqlConnectionStringBuilder
+					{
+						MultipleActiveResultSets = true,
+						InitialCatalog = databaseName,
+						DataSource = connectionName,
+						IntegratedSecurity = integratedSecurity,
+						UserID = userName,
+						Password = password
+					}.ConnectionString
+				}.ConnectionString;
+			}
+		}
+	}
+}

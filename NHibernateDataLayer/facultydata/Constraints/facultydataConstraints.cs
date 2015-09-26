@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Helpers;
+using HelperLibrary;
 
 namespace ApplicationUnderTest.facultydata.Constraints
 {

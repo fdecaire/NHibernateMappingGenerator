@@ -1,5 +1,5 @@
 using System;
-using Helpers;
+using HelperLibrary;
 using System.Collections.Generic;
 
 namespace NHibernateDataLayer.facultydata.TableGenerator

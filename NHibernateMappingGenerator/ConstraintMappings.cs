@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Helpers;
+using HelperLibrary;
 
 namespace NHibernateMappingGenerator
 {
@@ -27,7 +27,7 @@ namespace NHibernateMappingGenerator
 			bool firstTime = true;
 
 			result.AppendLine("using System.Collections.Generic;");
-			result.AppendLine("using Helpers;");
+			result.AppendLine("using HelperLibrary;");
 			result.AppendLine("");
 			result.AppendLine("namespace ApplicationUnderTest." + _databaseName + ".Constraints");
 			result.AppendLine("{");
@@ -82,6 +82,7 @@ namespace NHibernateMappingGenerator
 					string pkColumnName = reader["PKCOLUMN_NAME"].ToString();
 					string fkTableName = reader["FKTABLE_NAME"].ToString();
 					string fkColumnName = reader["FKCOLUMN_NAME"].ToString();
+					string schemaName = reader["PKTABLE_OWNER"].ToString();
 
 					if (!firstTime)
 					{
@@ -90,7 +91,7 @@ namespace NHibernateMappingGenerator
 
 					firstTime = false;
 
-					result.Append("\t\t\tnew ConstraintDefinition { DatabaseName=\"" + _databaseName + "\", PkTable = \"" + pkTableName + "\", PkField = \"" + pkColumnName + "\", FkTable = \"" + fkTableName + "\", FkField = \"" + fkColumnName + "\" }");
+					result.Append("\t\t\tnew ConstraintDefinition { DatabaseName=\"" + _databaseName + "\", PkTable = \"" + pkTableName + "\", PkField = \"" + pkColumnName + "\", FkTable = \"" + fkTableName + "\", FkField = \"" + fkColumnName + "\", SchemaName = \""+schemaName+"\" }");
 				}
 
 				if (!firstTime)

@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHibernateMappingGenerator", "NHibernateMappingGenerator\NHibernateMappingGenerator.csproj", "{FEBA89DF-41B8-4DDC-9CF7-9CC5F5136B35}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHibernateDataLayer", "NHibernateDataLayer\NHibernateDataLayer.csproj", "{1EDBE84F-6E1B-4ADD-8763-C23370CD0B3B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpers", "Helpers\Helpers.csproj", "{5A3F967E-7D50-4080-A302-9A98F8751B79}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleProjectUnderTest", "SampleProjectUnderTest\SampleProjectUnderTest.csproj", "{EC57E8DA-D2CB-4A08-9F5A-19D6A254E60D}"
 EndProject
@@ -13,7 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleUnitTests", "SampleUn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleEFProjectUnderTest", "SampleEFProjectUnderTest\SampleEFProjectUnderTest.csproj", "{1BA98680-6DF1-45C9-9B33-1893BA5AE839}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelpersUnitTests", "HelpersUnitTests\HelpersUnitTests.csproj", "{7CE8AE9C-5E19-4CC4-B4F5-D0B719B67183}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelperLibrary", "HelperLibrary\HelperLibrary.csproj", "{5A3F967E-7D50-4080-A302-9A98F8751B79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelperLibraryUnitTests", "HelperLibraryUnitTests\HelperLibraryUnitTests.csproj", "{F1F38D72-439E-4FD0-9207-0D5696761257}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +31,6 @@ Global
 		{1EDBE84F-6E1B-4ADD-8763-C23370CD0B3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EDBE84F-6E1B-4ADD-8763-C23370CD0B3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EDBE84F-6E1B-4ADD-8763-C23370CD0B3B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5A3F967E-7D50-4080-A302-9A98F8751B79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5A3F967E-7D50-4080-A302-9A98F8751B79}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5A3F967E-7D50-4080-A302-9A98F8751B79}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5A3F967E-7D50-4080-A302-9A98F8751B79}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EC57E8DA-D2CB-4A08-9F5A-19D6A254E60D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EC57E8DA-D2CB-4A08-9F5A-19D6A254E60D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC57E8DA-D2CB-4A08-9F5A-19D6A254E60D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,10 +43,14 @@ Global
 		{1BA98680-6DF1-45C9-9B33-1893BA5AE839}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BA98680-6DF1-45C9-9B33-1893BA5AE839}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BA98680-6DF1-45C9-9B33-1893BA5AE839}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7CE8AE9C-5E19-4CC4-B4F5-D0B719B67183}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7CE8AE9C-5E19-4CC4-B4F5-D0B719B67183}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7CE8AE9C-5E19-4CC4-B4F5-D0B719B67183}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7CE8AE9C-5E19-4CC4-B4F5-D0B719B67183}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A3F967E-7D50-4080-A302-9A98F8751B79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A3F967E-7D50-4080-A302-9A98F8751B79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A3F967E-7D50-4080-A302-9A98F8751B79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A3F967E-7D50-4080-A302-9A98F8751B79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1F38D72-439E-4FD0-9207-0D5696761257}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1F38D72-439E-4FD0-9207-0D5696761257}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1F38D72-439E-4FD0-9207-0D5696761257}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1F38D72-439E-4FD0-9207-0D5696761257}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

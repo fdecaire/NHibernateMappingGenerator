@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Helpers;
+using HelperLibrary;
 
 namespace NHibernateMappingGenerator
 {
@@ -108,7 +108,7 @@ SET QUOTED_IDENTIFIER ON
 GO 
 " + _code;
 
-			@out.AppendLine("using Helpers;");
+			@out.AppendLine("using HelperLibrary;");
 			@out.AppendLine("");
 			@out.AppendLine("namespace NHibernateDataLayer." + _databaseName + ".StoredProcedures");
 			@out.AppendLine("{");

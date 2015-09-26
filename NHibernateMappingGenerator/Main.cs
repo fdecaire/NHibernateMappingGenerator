@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.Sql;
-using Helpers;
+using HelperLibrary;
 
 namespace NHibernateMappingGenerator
 {

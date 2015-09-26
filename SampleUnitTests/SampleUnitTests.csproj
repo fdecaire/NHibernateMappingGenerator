@@ -56,6 +56,8 @@
       <HintPath>3rdPartyDLLs\NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.XML" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -76,9 +78,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Helpers\Helpers.csproj">
+    <ProjectReference Include="..\HelperLibrary\HelperLibrary.csproj">
       <Project>{5a3f967e-7d50-4080-a302-9a98f8751b79}</Project>
-      <Name>Helpers</Name>
+      <Name>HelperLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="..\NHibernateDataLayer\NHibernateDataLayer.csproj">
       <Project>{1edbe84f-6e1b-4add-8763-c23370cd0b3b}</Project>

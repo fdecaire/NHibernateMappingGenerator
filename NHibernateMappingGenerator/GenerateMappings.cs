@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-using Helpers;
+using HelperLibrary;
 using System.Xml;
 
 namespace NHibernateMappingGenerator

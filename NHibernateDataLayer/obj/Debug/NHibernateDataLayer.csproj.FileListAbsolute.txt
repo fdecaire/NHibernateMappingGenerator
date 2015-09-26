@@ -1,17 +1,17 @@
-E:\GitHub\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\NHibernateDataLayer.dll
-E:\GitHub\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\NHibernateDataLayer.pdb
-E:\GitHub\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\FluentNHibernate.dll
-E:\GitHub\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\Helpers.dll
-E:\GitHub\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\Iesi.Collections.dll
-E:\GitHub\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\NHibernate.dll
-E:\GitHub\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\EntityFramework.dll
-E:\GitHub\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\Newtonsoft.Json.dll
-E:\GitHub\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\Helpers.pdb
-E:\GitHub\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\FluentNHibernate.xml
-E:\GitHub\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\Iesi.Collections.xml
-E:\GitHub\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\NHibernate.xml
-E:\GitHub\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\EntityFramework.xml
-E:\GitHub\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\Newtonsoft.Json.xml
-E:\GitHub\NHibernateMappingGenerator\NHibernateDataLayer\obj\Debug\NHibernateDataLayer.csprojResolveAssemblyReference.cache
-E:\GitHub\NHibernateMappingGenerator\NHibernateDataLayer\obj\Debug\NHibernateDataLayer.dll
-E:\GitHub\NHibernateMappingGenerator\NHibernateDataLayer\obj\Debug\NHibernateDataLayer.pdb
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\NHibernateDataLayer.dll
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\NHibernateDataLayer.pdb
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\FluentNHibernate.dll
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\Helpers.dll
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\Iesi.Collections.dll
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\NHibernate.dll
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\EntityFramework.dll
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\Helpers.pdb
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\FluentNHibernate.xml
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\Iesi.Collections.xml
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\NHibernate.xml
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\EntityFramework.xml
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\NHibernateDataLayer\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\NHibernateDataLayer\obj\Debug\NHibernateDataLayer.csprojResolveAssemblyReference.cache
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\NHibernateDataLayer\obj\Debug\NHibernateDataLayer.dll
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\NHibernateDataLayer\obj\Debug\NHibernateDataLayer.pdb

@@ -1,4 +1,4 @@
-using Helpers;
+using HelperLibrary;
 
 namespace NHibernateDataLayer.facultydata.StoredProcedures
 {

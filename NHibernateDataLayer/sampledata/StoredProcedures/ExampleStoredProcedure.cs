@@ -1,4 +1,4 @@
-using Helpers;
+using HelperLibrary;
 
 namespace NHibernateDataLayer.sampledata.StoredProcedures
 {
@@ -31,10 +31,6 @@ GO
 -- Description:	<Description,,>
 -- =============================================
 CREATE PROCEDURE [dbo].[ExampleStoredProcedure]
-	@Param1 char(50),
-	@Param2 int,
-	@Param3 int = NULL,
-	@Param4 varchar(100)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from

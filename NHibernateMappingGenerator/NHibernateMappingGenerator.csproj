@@ -87,9 +87,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Helpers\Helpers.csproj">
+    <ProjectReference Include="..\HelperLibrary\HelperLibrary.csproj">
       <Project>{5a3f967e-7d50-4080-a302-9a98f8751b79}</Project>
-      <Name>Helpers</Name>
+      <Name>HelperLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

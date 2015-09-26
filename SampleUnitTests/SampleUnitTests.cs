@@ -1,12 +1,9 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NHibernateDataLayer.sampledata.Tables;
-using ApplicationUnderTest.sampledata.Constraints;
-using Helpers;
-using SampleProjectUnderTest;
-using NHibernate;
-using NHibernate.Linq;
+﻿using System.Data;
 using System.Linq;
+using ApplicationUnderTest.sampledata.Constraints;
+using HelperLibrary;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SampleProjectUnderTest;
 
 namespace SampleUnitTests
 {
@@ -19,22 +16,22 @@ namespace SampleUnitTests
 		{
 			UnitTestHelpers.TruncateData();
 		}
-
+		
 		[TestMethod]
-		public void TestXMLDataFileWithElements()
+		public void sample_test_stored_procedure()
 		{
-			UnitTestHelpers.ReadData("SampleUnitTests.TestData.StoreListData.xml");
-
-			using (var db = MSSQLSessionFactory.OpenSession())
+			using (var db = new ADODatabaseContext("", "sampledata"))
 			{
-				var query = (from s in db.Store select s).ToList();
+				db.ExecuteNonQuery("INSERT INTO department (Name) VALUES ('sales')");
+				db.ExecuteNonQuery("INSERT INTO person (First, Last, Department) VALUES ('Joe', 'Cool', 1)");
 
-				Assert.AreEqual(2, query.Count);
+				DataSet data = db.StoredProcedureSelect("ExampleStoredProcedure");
+				Assert.AreEqual(1, data.Tables[0].Rows.Count);
 			}
 		}
 
 		[TestMethod]
-		public void TestIentityOverride()
+		public void sample_test_identity_override()
 		{
 			UnitTestHelpers.ReadData("SampleUnitTests.TestData.StoreListData.xml");
 
@@ -49,7 +46,7 @@ namespace SampleUnitTests
 		}
 
 		[TestMethod]
-		public void TestJsonDataFile()
+		public void sample_test_json_data_file()
 		{
 			UnitTestHelpers.ReadData("SampleUnitTests.TestData.StoreListData.json");
 
@@ -67,7 +64,7 @@ namespace SampleUnitTests
 		}
 
 		[TestMethod]
-		public void TestConstraintCreate()
+		public void sample_test_constraint_create()
 		{
 			UnitTestHelpers.CreateConstraint(sampledataConstraints.ConstraintList, "product", "producttype");
 
@@ -75,7 +72,7 @@ namespace SampleUnitTests
 		}
 
 		[TestMethod]
-		public void TestXMLDataFileWithAttributes()
+		public void sample_test_xml_data_file_with_attributes()
 		{
 			UnitTestHelpers.ReadData("SampleUnitTests.TestData.StoreListDataWithAttributes.xml");
 
@@ -86,6 +83,19 @@ namespace SampleUnitTests
 
 				var productQuery = (from s in db.Product select s).ToList();
 				Assert.AreEqual(4, productQuery.Count);
+			}
+		}
+
+		[TestMethod]
+		public void sample_test_xml_data_file_with_elements()
+		{
+			UnitTestHelpers.ReadData("SampleUnitTests.TestData.StoreListData.xml");
+
+			using (var db = MSSQLSessionFactory.OpenSession())
+			{
+				var query = (from s in db.Store select s).ToList();
+
+				Assert.AreEqual(2, query.Count);
 			}
 		}
 	}

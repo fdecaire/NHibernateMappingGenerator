@@ -4,17 +4,17 @@ using System;
 namespace NHibernateDataLayer.sampledata.Tables
 {
 	// DO NOT MODIFY! This code is auto-generated.
-	public partial class department
+	public partial class Department
 	{
 		public virtual int id { get; set; }
 		public virtual string name { get; set; }
 	}
 
-	public class departmentMap : ClassMap<department>
+	public class DepartmentMap : ClassMap<Department>
 	{
-		public departmentMap()
+		public DepartmentMap()
 		{
-			Table("sampledata..department");
+			Table("sampledata..Department");
 			Id(u => u.id).GeneratedBy.Identity().Not.Nullable();
 			Map(u => u.name).CustomSqlType("varchar (50)").Length(50).Nullable();
 		}

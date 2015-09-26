@@ -58,12 +58,6 @@
     <Content Include="3rdPartyDLLs\NHibernate.dll" />
     <Content Include="3rdPartyDLLs\NHibernate.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Helpers\Helpers.csproj">
-      <Project>{5a3f967e-7d50-4080-a302-9a98f8751b79}</Project>
-      <Name>Helpers</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
@@ -73,24 +67,6 @@
   </Target>
   -->
   <ItemGroup>
-    <Compile Include="sampledata\Constraints\sampledataConstraints.cs" />
-    <Compile Include="sampledata\StoredProcedures\ExampleStoredProcedure.cs" />
-    <Compile Include="sampledata\StoredProcedures\ReadPersonAndStores.cs" />
-    <Compile Include="sampledata\StoredProcedures\ReadPersonByLastName.cs" />
-    <Compile Include="sampledata\StoredProcedures\ReadPersonNames.cs" />
-    <Compile Include="sampledata\StoredProcedures\TestProc2.cs" />
-    <Compile Include="sampledata\TableGeneratorCode\sampledataTableGeneratorCode.cs" />
-    <Compile Include="sampledata\Tables\department.cs" />
-    <Compile Include="sampledata\Tables\EmptyTable.cs" />
-    <Compile Include="sampledata\Tables\person.cs" />
-    <Compile Include="sampledata\Tables\Product.cs" />
-    <Compile Include="sampledata\Tables\ProductType.cs" />
-    <Compile Include="sampledata\Tables\Store.cs" />
-    <Compile Include="sampledata\Tables\student.cs" />
-    <Compile Include="sampledata\Tables\vwStoreProduct.cs" />
-    <Compile Include="sampledata\Views\vwStoreProduct.cs" />
-    <Compile Include="sampledata\Wrappers\SessionWrapper.cs" />
-    <Compile Include="sampledata\Wrappers\StatelessSessionWrapper.cs" />
     <Compile Include="TestClass.cs" />
     <Compile Include="Wrappers\SessionWrapper.cs" />
     <Compile Include="Wrappers\StatelessSessionWrapper.cs" />
@@ -102,11 +78,67 @@
     <Compile Include="facultydata\StoredProcedures\pSetClassForTeacher.cs" />
     <Compile Include="facultydata\StoredProcedures\pSelectClassPerTeacher.cs" />
     <Compile Include="facultydata\Constraints\facultydataConstraints.cs" />
+    <Compile Include="APIUniversity\Tables\Room.cs" />
+    <Compile Include="APIUniversity\Tables\RoomReservation.cs" />
+    <Compile Include="APIUniversity\Wrappers\SessionWrapper.cs" />
+    <Compile Include="APIUniversity\Wrappers\StatelessSessionWrapper.cs" />
+    <Compile Include="APIUniversity\TableGeneratorCode\APIUniversityTableGeneratorCode.cs" />
+    <Compile Include="APIUniversity\StoredProcedures\sp_upgraddiagrams.cs" />
+    <Compile Include="APIUniversity\StoredProcedures\sp_helpdiagrams.cs" />
+    <Compile Include="APIUniversity\StoredProcedures\sp_helpdiagramdefinition.cs" />
+    <Compile Include="APIUniversity\StoredProcedures\sp_creatediagram.cs" />
+    <Compile Include="APIUniversity\StoredProcedures\sp_renamediagram.cs" />
+    <Compile Include="APIUniversity\StoredProcedures\sp_alterdiagram.cs" />
+    <Compile Include="APIUniversity\StoredProcedures\sp_dropdiagram.cs" />
+    <Compile Include="APIUniversity\StoredProcedures\select_rooms.cs" />
+    <Compile Include="APIUniversity\StoredProcedures\select_one_room.cs" />
+    <Compile Include="APIUniversity\Constraints\APIUniversityConstraints.cs" />
+    <Compile Include="studentdata\Tables\student.cs" />
+    <Compile Include="studentdata\Tables\StudentClass.cs" />
+    <Compile Include="studentdata\Tables\Student2Class.cs" />
+    <Compile Include="studentdata\Wrappers\SessionWrapper.cs" />
+    <Compile Include="studentdata\Wrappers\StatelessSessionWrapper.cs" />
+    <Compile Include="studentdata\TableGeneratorCode\studentdataTableGeneratorCode.cs" />
+    <Compile Include="studentdata\Constraints\studentdataConstraints.cs" />
+    <Compile Include="sampledata\Tables\Store.cs" />
+    <Compile Include="sampledata\Tables\ProductType.cs" />
+    <Compile Include="sampledata\Tables\Product.cs" />
+    <Compile Include="sampledata\Tables\vwStoreProduct.cs" />
+    <Compile Include="sampledata\Tables\EmptyTable.cs" />
+    <Compile Include="sampledata\Tables\Department.cs" />
+    <Compile Include="sampledata\Tables\Person.cs" />
+    <Compile Include="sampledata\Tables\TodoItem.cs" />
+    <Compile Include="sampledata\Tables\ProgramSetting.cs" />
+    <Compile Include="sampledata\Wrappers\SessionWrapper.cs" />
+    <Compile Include="sampledata\Wrappers\StatelessSessionWrapper.cs" />
+    <Compile Include="sampledata\TableGeneratorCode\sampledataTableGeneratorCode.cs" />
+    <Compile Include="sampledata\StoredProcedures\ReadPersonNames.cs" />
+    <Compile Include="sampledata\StoredProcedures\ReadPersonByLastName.cs" />
+    <Compile Include="sampledata\StoredProcedures\TestProc2.cs" />
+    <Compile Include="sampledata\StoredProcedures\ReadPersonAndStores.cs" />
+    <Compile Include="sampledata\StoredProcedures\ExampleStoredProcedure.cs" />
+    <Compile Include="sampledata\Views\vwStoreProduct.cs" />
+    <Compile Include="sampledata\Constraints\sampledataConstraints.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="facultydata\Constraints" />
-    <Folder Include="facultydata\StoredProcedures" />
-    <Folder Include="facultydata\Tables" />
-    <Folder Include="facultydata\Views" />
+    <Folder Include="facultydata\Views\" />
+    <Folder Include="APIUniversity\Constraints" />
+    <Folder Include="APIUniversity\StoredProcedures" />
+    <Folder Include="APIUniversity\Tables" />
+    <Folder Include="APIUniversity\Views" />
+    <Folder Include="studentdata\Constraints" />
+    <Folder Include="studentdata\StoredProcedures" />
+    <Folder Include="studentdata\Tables" />
+    <Folder Include="studentdata\Views" />
+    <Folder Include="sampledata\Constraints" />
+    <Folder Include="sampledata\StoredProcedures" />
+    <Folder Include="sampledata\Tables" />
+    <Folder Include="sampledata\Views" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HelperLibrary\HelperLibrary.csproj">
+      <Project>{5a3f967e-7d50-4080-a302-9a98f8751b79}</Project>
+      <Name>HelperLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

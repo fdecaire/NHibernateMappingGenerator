@@ -4,7 +4,7 @@ using System;
 namespace NHibernateDataLayer.sampledata.Tables
 {
 	// DO NOT MODIFY! This code is auto-generated.
-	public partial class person
+	public partial class Person
 	{
 		public virtual int id { get; set; }
 		public virtual string first { get; set; }
@@ -12,11 +12,11 @@ namespace NHibernateDataLayer.sampledata.Tables
 		public virtual int department { get; set; }
 	}
 
-	public class personMap : ClassMap<person>
+	public class PersonMap : ClassMap<Person>
 	{
-		public personMap()
+		public PersonMap()
 		{
-			Table("sampledata..person");
+			Table("sampledata..Person");
 			Id(u => u.id).GeneratedBy.Identity().Not.Nullable();
 			Map(u => u.first).CustomSqlType("varchar (50)").Length(50).Nullable();
 			Map(u => u.last).CustomSqlType("varchar (50)").Length(50).Nullable();

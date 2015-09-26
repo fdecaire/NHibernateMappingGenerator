@@ -10,10 +10,6 @@ namespace NHibernateDataLayer
 		{
 			get { return _Session.Query<sampledata.Tables.Store>(); }
 		}
-		public IQueryable<sampledata.Tables.student> student
-		{
-			get { return _Session.Query<sampledata.Tables.student>(); }
-		}
 		public IQueryable<sampledata.Tables.ProductType> ProductType
 		{
 			get { return _Session.Query<sampledata.Tables.ProductType>(); }
@@ -30,13 +26,21 @@ namespace NHibernateDataLayer
 		{
 			get { return _Session.Query<sampledata.Tables.EmptyTable>(); }
 		}
-		public IQueryable<sampledata.Tables.department> department
+		public IQueryable<sampledata.Tables.Department> Department
 		{
-			get { return _Session.Query<sampledata.Tables.department>(); }
+			get { return _Session.Query<sampledata.Tables.Department>(); }
 		}
-		public IQueryable<sampledata.Tables.person> person
+		public IQueryable<sampledata.Tables.Person> Person
 		{
-			get { return _Session.Query<sampledata.Tables.person>(); }
+			get { return _Session.Query<sampledata.Tables.Person>(); }
+		}
+		public IQueryable<sampledata.Tables.TodoItem> TodoItem
+		{
+			get { return _Session.Query<sampledata.Tables.TodoItem>(); }
+		}
+		public IQueryable<sampledata.Tables.ProgramSetting> ProgramSetting
+		{
+			get { return _Session.Query<sampledata.Tables.ProgramSetting>(); }
 		}
 	}
 }

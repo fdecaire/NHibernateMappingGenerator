@@ -1,6 +1,6 @@
 ﻿using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
-using Helpers;
+using HelperLibrary;
 using NHibernate;
 using NHibernate.Tool.hbm2ddl;
 using NHibernateDataLayer.sampledata.Tables;
@@ -26,7 +26,7 @@ namespace SampleProjectUnderTest
 					_sessionFactory = Fluently.Configure()
 					.Database(MsSqlConfiguration.MsSql2005
 					.ConnectionString("Server=" + serverInstance + ";Initial Catalog=sampledata;Integrated Security=True"))
-					.Mappings(m => m.FluentMappings.Add<departmentMap>())
+					.Mappings(m => m.FluentMappings.Add<DepartmentMap>())
 					.Mappings(m => m.FluentMappings.Add<StoreMap>())
 					.Mappings(m => m.FluentMappings.Add<ProductMap>())
 					.Mappings(m => m.FluentMappings.Add<ProductTypeMap>())

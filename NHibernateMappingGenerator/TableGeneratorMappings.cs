@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Helpers;
+using HelperLibrary;
 
 namespace NHibernateMappingGenerator
 {
@@ -41,7 +41,7 @@ namespace NHibernateMappingGenerator
 			var @out = new StringBuilder();
 
 			@out.AppendLine("using System;");
-			@out.AppendLine("using Helpers;");
+			@out.AppendLine("using HelperLibrary;");
 			@out.AppendLine("using System.Collections.Generic;");
 			@out.AppendLine("");
 			@out.AppendLine("namespace NHibernateDataLayer." + _databaseName + ".TableGenerator");

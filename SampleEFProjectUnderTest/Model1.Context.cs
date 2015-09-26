@@ -12,7 +12,7 @@ namespace SampleEFProjectUnderTest
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using Helpers;
+	using HelperLibrary;
     
     public partial class sampledataEntities : DbContext
     {

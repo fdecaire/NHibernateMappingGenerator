@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using HelperLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SampleProjectUnderTest;
-using Helpers;
+using NHibernateDataLayer.sampledata.StoredProcedures;
+using NHibernateDataLayer.sampledata.TableGenerator;
 
 namespace SampleUnitTests
 {
@@ -18,7 +14,10 @@ namespace SampleUnitTests
 			UnitTestHelpers.Start("sampledatatestinstance", new string[] { "sampledata" });
 
 			// create tables
-			UnitTestHelpers.CreateAllTables(NHibernateDataLayer.sampledata.TableGenerator.sampledataTables.TableList, NHibernateDataLayer.sampledata.TableGenerator.sampledataTables.DatabaseName);
+			UnitTestHelpers.CreateAllTables(sampledataTables.TableList, sampledataTables.DatabaseName);
+
+			// create one stored procedure for testing purposes
+			ExampleStoredProcedure.Instance.CreateStoredProcedure();
 		}
 
 		[AssemblyCleanup]

@@ -1,20 +1,20 @@
-E:\GitHub\NHibernateMappingGenerator\SampleProjectUnderTest\bin\Debug\SampleProjectUnderTest.exe.config
-E:\GitHub\NHibernateMappingGenerator\SampleProjectUnderTest\bin\Debug\SampleProjectUnderTest.exe
-E:\GitHub\NHibernateMappingGenerator\SampleProjectUnderTest\bin\Debug\SampleProjectUnderTest.pdb
-E:\GitHub\NHibernateMappingGenerator\SampleProjectUnderTest\bin\Debug\FluentNHibernate.dll
-E:\GitHub\NHibernateMappingGenerator\SampleProjectUnderTest\bin\Debug\Helpers.dll
-E:\GitHub\NHibernateMappingGenerator\SampleProjectUnderTest\bin\Debug\Iesi.Collections.dll
-E:\GitHub\NHibernateMappingGenerator\SampleProjectUnderTest\bin\Debug\NHibernate.dll
-E:\GitHub\NHibernateMappingGenerator\SampleProjectUnderTest\bin\Debug\NHibernateDataLayer.dll
-E:\GitHub\NHibernateMappingGenerator\SampleProjectUnderTest\bin\Debug\EntityFramework.dll
-E:\GitHub\NHibernateMappingGenerator\SampleProjectUnderTest\bin\Debug\Newtonsoft.Json.dll
-E:\GitHub\NHibernateMappingGenerator\SampleProjectUnderTest\bin\Debug\Helpers.pdb
-E:\GitHub\NHibernateMappingGenerator\SampleProjectUnderTest\bin\Debug\NHibernateDataLayer.pdb
-E:\GitHub\NHibernateMappingGenerator\SampleProjectUnderTest\bin\Debug\FluentNHibernate.xml
-E:\GitHub\NHibernateMappingGenerator\SampleProjectUnderTest\bin\Debug\Iesi.Collections.xml
-E:\GitHub\NHibernateMappingGenerator\SampleProjectUnderTest\bin\Debug\NHibernate.xml
-E:\GitHub\NHibernateMappingGenerator\SampleProjectUnderTest\bin\Debug\EntityFramework.xml
-E:\GitHub\NHibernateMappingGenerator\SampleProjectUnderTest\bin\Debug\Newtonsoft.Json.xml
-E:\GitHub\NHibernateMappingGenerator\SampleProjectUnderTest\obj\Debug\SampleProjectUnderTest.csprojResolveAssemblyReference.cache
-E:\GitHub\NHibernateMappingGenerator\SampleProjectUnderTest\obj\Debug\SampleProjectUnderTest.exe
-E:\GitHub\NHibernateMappingGenerator\SampleProjectUnderTest\obj\Debug\SampleProjectUnderTest.pdb
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\SampleProjectUnderTest\bin\Debug\SampleProjectUnderTest.exe.config
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\SampleProjectUnderTest\bin\Debug\SampleProjectUnderTest.exe
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\SampleProjectUnderTest\bin\Debug\SampleProjectUnderTest.pdb
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\SampleProjectUnderTest\bin\Debug\FluentNHibernate.dll
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\SampleProjectUnderTest\bin\Debug\Helpers.dll
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\SampleProjectUnderTest\bin\Debug\Iesi.Collections.dll
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\SampleProjectUnderTest\bin\Debug\NHibernate.dll
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\SampleProjectUnderTest\bin\Debug\NHibernateDataLayer.dll
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\SampleProjectUnderTest\bin\Debug\EntityFramework.dll
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\SampleProjectUnderTest\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\SampleProjectUnderTest\bin\Debug\Helpers.pdb
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\SampleProjectUnderTest\bin\Debug\NHibernateDataLayer.pdb
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\SampleProjectUnderTest\bin\Debug\FluentNHibernate.xml
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\SampleProjectUnderTest\bin\Debug\Iesi.Collections.xml
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\SampleProjectUnderTest\bin\Debug\NHibernate.xml
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\SampleProjectUnderTest\bin\Debug\EntityFramework.xml
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\SampleProjectUnderTest\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\SampleProjectUnderTest\obj\Debug\SampleProjectUnderTest.csprojResolveAssemblyReference.cache
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\SampleProjectUnderTest\obj\Debug\SampleProjectUnderTest.exe
+C:\Users\Frank\Documents\Visual Studio 2012\Projects\NHibernateMappingGenerator\SampleProjectUnderTest\obj\Debug\SampleProjectUnderTest.pdb

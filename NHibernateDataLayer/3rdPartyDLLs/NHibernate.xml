@@ -11706,7 +11706,7 @@
             A property value, or grouped property value
             </summary>
         </member>
-        <member name="T:NHibernate.DebugHelpers.DictionaryProxy">
+        <member name="T:NHibernate.DebugHelperLibrary.DictionaryProxy">
             <summary>
             Used to show a better debug display for dictionaries
             </summary>
@@ -41658,7 +41658,7 @@
             <remarks>
             <para>
             Do NOT use a System.Value type as the key for this Hashtable - only classes.  See
-            the <a href="http://groups.google.com/groups?hl=en&amp;lr=&amp;ie=UTF-8&amp;oe=UTF-8&amp;threadm=bds2rm%24ruc%241%40charly.heeg.de&amp;rnum=1&amp;prev=/groups%3Fhl%3Den%26lr%3D%26ie%3DUTF-8%26oe%3DUTF-8%26q%3DSystem.Runtime.CompilerServices.RuntimeHelpers.GetHashCode%26sa%3DN%26tab%3Dwg">google thread</a>
+            the <a href="http://groups.google.com/groups?hl=en&amp;lr=&amp;ie=UTF-8&amp;oe=UTF-8&amp;threadm=bds2rm%24ruc%241%40charly.heeg.de&amp;rnum=1&amp;prev=/groups%3Fhl%3Den%26lr%3D%26ie%3DUTF-8%26oe%3DUTF-8%26q%3DSystem.Runtime.CompilerServices.RuntimeHelperLibrary.GetHashCode%26sa%3DN%26tab%3Dwg">google thread</a>
             about why using System.Value is a bad thing.
             </para>
             <para>
