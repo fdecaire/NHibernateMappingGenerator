@@ -18,9 +18,9 @@ namespace SampleProjectUnderTest
 				if (_sessionFactory == null)
 				{
 					string serverInstance = "FRANK-PC\\FRANK";
-					if (UnitTestHelpers.IsInUnitTest)
+					if (UnitTestHelperLibrary.IsInUnitTest)
 					{
-						serverInstance = "(localdb)\\" + UnitTestHelpers.InstanceName;
+						serverInstance = "(localdb)\\" + UnitTestHelperLibrary.InstanceName;
 					}
 
 					_sessionFactory = Fluently.Configure()
