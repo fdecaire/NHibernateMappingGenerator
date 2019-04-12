@@ -191,10 +191,10 @@ namespace HelperLibrary
 				  CONTAINMENT = NONE
 				  ON  PRIMARY 
 				  ( NAME = N'" + databaseName + @"', FILENAME = N'" + databaseDirectory + @"\" + databaseName +
-																									@".mdf' , SIZE = 8096KB , FILEGROWTH = 1024KB )
+				    @".mdf' , SIZE = 8096KB , FILEGROWTH = 1024KB )
 				  LOG ON 
 				  ( NAME = N'" + databaseName + @"_log', FILENAME = N'" + databaseDirectory + @"\" + databaseName +
-																									@"_log.ldf' , SIZE = 8096KB , FILEGROWTH = 10%)
+					@"_log.ldf' , SIZE = 8096KB , FILEGROWTH = 10%)
 				  ");
 			}
 		}
@@ -307,10 +307,10 @@ namespace HelperLibrary
 			}
 		}
 
-		public static void CreateAllTables(List<TableDefinition> TableList, string databaseName)
+		public static void CreateAllTables(List<TableDefinition> tableList, string databaseName)
 		{
 			// create all non "dbo" schemas in database
-			var schemaList = (from t in TableList where t.SchemaName != "dbo" select t.SchemaName).Distinct();
+			var schemaList = (from t in tableList where t.SchemaName != "dbo" select t.SchemaName).Distinct();
 			foreach (var schemaName in schemaList)
 			{
 				if (!string.IsNullOrEmpty(schemaName))
@@ -323,7 +323,7 @@ namespace HelperLibrary
 			}
 
 			// generate all tables listed in the table name list
-			foreach (var tableDefinition in TableList)
+			foreach (var tableDefinition in tableList)
 			{
 				var query = tableDefinition.CreateScript;
 
@@ -401,7 +401,7 @@ namespace HelperLibrary
 
             using (var db = new ADODatabaseContext("", database))
             {
-                string query = "SELECT COUNT(*) AS total FROM " + tableName;
+                var query = "SELECT COUNT(*) AS total FROM " + tableName;
 				using (var reader = db.ReadQuery(query))
 				{
 					while (reader.Read())
@@ -425,9 +425,9 @@ namespace HelperLibrary
 					using (var reader = new StreamReader(stream))
 					{
 						var code = reader.ReadToEnd();
-						var TSQLcommands = Regex.Split(code, "GO");
+						var tsqlCommandList = Regex.Split(code, "GO");
 
-						foreach (var tsqlCommand in TSQLcommands)
+						foreach (var tsqlCommand in tsqlCommandList)
 						{
 							if (tsqlCommand.Trim() != "")
 							{

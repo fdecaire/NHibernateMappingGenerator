@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Data.SqlClient;
 
 namespace HelperLibrary
 {
@@ -15,11 +13,11 @@ namespace HelperLibrary
 
 		public static List<string> Explode(this string s, char separator)
 		{
-			List<string> result = new List<string>();
+			var result = new List<string>();
 
-			string[] temporary = s.Split(separator);
+			var temporary = s.Split(separator);
 
-			foreach (string temp in temporary)
+			foreach (var temp in temporary)
 			{
 				result.Add(temp);
 			}
@@ -28,23 +26,19 @@ namespace HelperLibrary
 		}
 
 		public static string ReadFromList(this string[] list, int index)
-		{
-			if (list.Length > index)
-			{
-				if (list[index] == "")
+        {
+            if (list.Length > index)
+            {
+                if (list[index] == "")
 				{
 					return null;
 				}
-				else
-				{
-					return list[index];
-				}
-			}
-			else
-			{
-				return null;
-			}
-		}
+
+                return list[index];
+            }
+
+            return null;
+        }
 
 		/// <summary>
 		/// Input could be nullable.  Return null if input is null, otherwise convert to string.
@@ -53,12 +47,7 @@ namespace HelperLibrary
 		/// <returns></returns>
 		public static string ToNullableString(this object o)
 		{
-			if (o == null)
-			{
-				return null;
-			}
-
-			return o.ToString();
+            return o?.ToString();
 		}
 
 		public static int ToNullableInt(this object num)
@@ -87,18 +76,14 @@ namespace HelperLibrary
 		}
 		
 		public static bool IsNumeric(this string text)
-		{
-			double output;
-
-			if (double.TryParse(text, out output))
+        {
+            if (double.TryParse(text, out _))
 			{
 				return true;
 			}
-			else
-			{
-				return false;
-			}
-		}
+
+            return false;
+        }
 
 		/// <summary>
 		/// returns true if the string "text" represents an integer value
@@ -106,18 +91,14 @@ namespace HelperLibrary
 		/// <param name="text"></param>
 		/// <returns></returns>
 		public static bool IsInt(this string text)
-		{
-			int output;
-
-			if (int.TryParse(text, out output))
+        {
+            if (int.TryParse(text, out _))
 			{
 				return true;
 			}
-			else
-			{
-				return false;
-			}
-		}
+
+            return false;
+        }
 		/// <summary>
 		/// Convert two char day of week into DayOfWeek type
 		/// </summary>

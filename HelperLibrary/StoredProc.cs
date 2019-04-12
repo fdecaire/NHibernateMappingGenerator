@@ -13,16 +13,16 @@ namespace HelperLibrary
 			using (var db = new ADODatabaseContext("TEST", Database))
 			{
 				// first, drop the stored procedure if it already exists
-				string sp = @"if exists (select * from sys.objects where name = N'" + Name.Replace("_tilde_", "~") + @"' and type = N'P') 
+				var sp = @"if exists (select * from sys.objects where name = N'" + Name.Replace("_tilde_", "~") + @"' and type = N'P') 
 					  begin
 						drop procedure " + Name.Replace("_tilde_", "~") + @"
 					  end";
 				db.ExecuteNonQuery(sp);
 
 				// need to read the text file and create the stored procedure in the test database
-				string[] TSQLcommands = Regex.Split(Code, "GO");
+				var tsqlCommandList = Regex.Split(Code, "GO");
 
-				foreach (var tsqlCommand in TSQLcommands)
+				foreach (var tsqlCommand in tsqlCommandList)
 				{
 					db.ExecuteNonQuery(tsqlCommand);
 				}
