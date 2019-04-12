@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using System.Xml.Linq;
 using Newtonsoft.Json;
 using System.Xml;
 
@@ -14,13 +13,9 @@ namespace HelperLibrary
 	public class UnitTestHelpers
 	{
 		private static string[] _databaseList;
-		private static string _instanceName;
-		public static string InstanceName
-		{
-			get { return _instanceName; }
-		}
+        public static string InstanceName { get; private set; }
 
-		public static bool IsInUnitTest
+        public static bool IsInUnitTest
 		{
 			get
 			{
@@ -32,17 +27,17 @@ namespace HelperLibrary
 		public static void Start(string instanceName, string[] databaseList)
 		{
 			_databaseList = databaseList;
-			_instanceName = instanceName;
+			InstanceName = instanceName;
 
 			// make sure any previous instances are shut down
-			ProcessStartInfo startInfo = new ProcessStartInfo
+			var startInfo = new ProcessStartInfo
 			{
 				WindowStyle = ProcessWindowStyle.Hidden,
 				FileName = "cmd.exe",
 				Arguments = "/c sqllocaldb stop \"" + instanceName + "\""
 			};
 
-			Process process = new Process { StartInfo = startInfo };
+			var process = new Process { StartInfo = startInfo };
 			process.Start();
 			process.WaitForExit();
 
@@ -91,19 +86,19 @@ namespace HelperLibrary
 		public static void End()
 		{
 			// shut down the instance
-			ProcessStartInfo startInfo = new ProcessStartInfo
+			var startInfo = new ProcessStartInfo
 			{
 				WindowStyle = ProcessWindowStyle.Hidden,
 				FileName = "cmd.exe",
-				Arguments = "/c sqllocaldb stop \"" + _instanceName + "\""
+				Arguments = "/c sqllocaldb stop \"" + InstanceName + "\""
 			};
 
-			Process process = new Process { StartInfo = startInfo };
+			var process = new Process { StartInfo = startInfo };
 			process.Start();
 			process.WaitForExit();
 
 			// delete the instance
-			startInfo.Arguments = "/c sqllocaldb delete \"" + _instanceName + "\"";
+			startInfo.Arguments = "/c sqllocaldb delete \"" + InstanceName + "\"";
 			process.Start();
 			process.WaitForExit();
 
@@ -116,7 +111,7 @@ namespace HelperLibrary
 		// truncate all tables in the databases setup
 		public static void TruncateData()
 		{
-			List<string> tableList = new List<string>();
+			var tableList = new List<string>();
 
 			using (var db = new ADODatabaseContext("TEST"))
 			{
@@ -134,8 +129,8 @@ namespace HelperLibrary
 					{
 						while (reader.Read())
 						{
-							string tableName = reader["table_name"].ToString();
-							string schemaName = reader["TABLE_SCHEMA"].ToString();
+							var tableName = reader["table_name"].ToString();
+							var schemaName = reader["TABLE_SCHEMA"].ToString();
 
 							tableList.Add(database + "." + schemaName + "." + tableName);
 						}
@@ -172,13 +167,13 @@ namespace HelperLibrary
 				{
 					while (reader.Read())
 					{
-						string fkTableName = reader["TableName"].ToString();
-						string constraintName = reader["ConstraintName"].ToString();
-						string schemaName = reader["SchemaName"].ToString();
+						var foreignKeyTableName = reader["TableName"].ToString();
+						var constraintName = reader["ConstraintName"].ToString();
+						var schemaName = reader["SchemaName"].ToString();
 
 						using (var dbExec = new ADODatabaseContext("TEST", database))
 						{
-							string query = "ALTER TABLE " + database + "." + schemaName + "." + fkTableName + " DROP CONSTRAINT " + constraintName;
+							string query = "ALTER TABLE " + database + "." + schemaName + "." + foreignKeyTableName + " DROP CONSTRAINT " + constraintName;
 							dbExec.ExecuteNonQuery(query);
 						}
 					}
@@ -188,7 +183,7 @@ namespace HelperLibrary
 
 		private static void CreateDatabase(string databaseName)
 		{
-			string databaseDirectory = Directory.GetCurrentDirectory();
+			var databaseDirectory = Directory.GetCurrentDirectory();
 
 			using (var db = new ADODatabaseContext("TEST"))
 			{
@@ -209,20 +204,20 @@ namespace HelperLibrary
 			using (var db = new ADODatabaseContext("TEST", databaseName))
 			{
 				// first, drop the stored procedure if it already exists
-				string sp = @"if exists (select * from sys.objects where name = N'" + spName + @"' and type = N'P') 
+				var sp = @"if exists (select * from sys.objects where name = N'" + spName + @"' and type = N'P') 
 						  begin
 							drop procedure " + spName + @"
 						  end";
 				db.ExecuteNonQuery(sp);
 
 				// need to read the text file and create the stored procedure in the test database
-				using (StreamReader reader = new StreamReader(stream))
+				using (var reader = new StreamReader(stream))
 				{
-					string storedProcText = reader.ReadToEnd();
+					var storedProcText = reader.ReadToEnd();
 
-					string[] TSQLcommands = Regex.Split(storedProcText, "GO");
+					var tsqLcommandList = Regex.Split(storedProcText, "GO");
 
-					foreach (var tsqlCommand in TSQLcommands)
+					foreach (var tsqlCommand in tsqLcommandList)
 					{
 						db.ExecuteNonQuery(tsqlCommand);
 					}
@@ -241,23 +236,23 @@ namespace HelperLibrary
 
 		public static void ReadData(string xmlJsonDataFile)
 		{
-			string databaseName = "";
-			string schemaName = "dbo";
+            var schemaName = "dbo";
 
 			var assembly = Assembly.GetCallingAssembly();
 			var resourceName = xmlJsonDataFile;
-			using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+			using (var stream = assembly.GetManifestResourceStream(resourceName))
 			{
 				if (stream == null)
 				{
 					throw new Exception("Cannot find XML data file, make sure it is set to Embedded Resource!");
 				}
 
-				if (xmlJsonDataFile.Substring(xmlJsonDataFile.Length - 3, 3).ToLower() == "xml")
+                var databaseName = "";
+                if (xmlJsonDataFile.Substring(xmlJsonDataFile.Length - 3, 3).ToLower() == "xml")
 				{
-					using (StreamReader reader = new StreamReader(stream))
+					using (var reader = new StreamReader(stream))
 					{
-						XmlDocument document = new XmlDocument();
+						var document = new XmlDocument();
 						document.LoadXml(reader.ReadToEnd());
 
 						foreach (XmlNode element in document.ChildNodes)
@@ -274,7 +269,7 @@ namespace HelperLibrary
 										schemaName = subelement.Attributes["schema"].Value;
 									}
 
-									InsertQueryGenerator insertQueryGenerator = new InsertQueryGenerator("TEST", databaseName, schemaName);
+									var insertQueryGenerator = new InsertQueryGenerator("TEST", databaseName, schemaName);
 
 									var children = subelement.ChildNodes;
 									foreach (XmlNode e in children)
@@ -288,9 +283,9 @@ namespace HelperLibrary
 				}
 				else if (xmlJsonDataFile.Substring(xmlJsonDataFile.Length - 4, 4).ToLower() == "json")
 				{
-					using (StreamReader reader = new StreamReader(stream))
+					using (var reader = new StreamReader(stream))
 					{
-						string jsonFile = reader.ReadToEnd();
+						var jsonFile = reader.ReadToEnd();
 
 						dynamic temp = JsonConvert.DeserializeObject(jsonFile);
 						InsertQueryGenerator insertQueryGenerator = null;
@@ -318,7 +313,7 @@ namespace HelperLibrary
 			var schemaList = (from t in TableList where t.SchemaName != "dbo" select t.SchemaName).Distinct();
 			foreach (var schemaName in schemaList)
 			{
-				if (!String.IsNullOrEmpty(schemaName))
+				if (!string.IsNullOrEmpty(schemaName))
 				{
 					using (var db = new ADODatabaseContext("TEST", databaseName))
 					{
@@ -330,7 +325,7 @@ namespace HelperLibrary
 			// generate all tables listed in the table name list
 			foreach (var tableDefinition in TableList)
 			{
-				string query = tableDefinition.CreateScript;
+				var query = tableDefinition.CreateScript;
 
 				using (var db = new ADODatabaseContext("TEST", databaseName))
 				{
@@ -339,12 +334,12 @@ namespace HelperLibrary
 			}
 		}
 
-		public static void CreateConstraint(List<ConstraintDefinition> ConstraintList, string table1, string table2)
+		public static void CreateConstraint(List<ConstraintDefinition> pConstraintList, string table1, string table2)
 		{
-			var constraintList = ConstraintList.Where(x => x.PkTable.ToLower() == table1 && x.FkTable.ToLower() == table2).ToList();
+			var constraintList = pConstraintList.Where(x => x.PkTable.ToLower() == table1 && x.FkTable.ToLower() == table2).ToList();
 			foreach (var constraint in constraintList)
 			{
-				string query = "ALTER TABLE " + constraint.FkTable + " ADD CONSTRAINT fk_" + constraint.FkTable + "_" + constraint.PkTable + " FOREIGN KEY (" + constraint.FkField + ") REFERENCES " + constraint.PkTable + "(" + constraint.PkField + ")";
+				var query = "ALTER TABLE " + constraint.FkTable + " ADD CONSTRAINT fk_" + constraint.FkTable + "_" + constraint.PkTable + " FOREIGN KEY (" + constraint.FkField + ") REFERENCES " + constraint.PkTable + "(" + constraint.PkField + ")";
 
 				using (var db = new ADODatabaseContext("TEST"))
 				{
@@ -352,10 +347,10 @@ namespace HelperLibrary
 				}
 			}
 
-			constraintList = ConstraintList.Where(x => x.PkTable.ToLower() == table2 && x.FkTable.ToLower() == table1).ToList();
+			constraintList = pConstraintList.Where(x => x.PkTable.ToLower() == table2 && x.FkTable.ToLower() == table1).ToList();
 			foreach (var constraint in constraintList)
 			{
-				string query = "ALTER TABLE " + constraint.FkTable + " ADD CONSTRAINT fk_" + constraint.FkTable + "_" + constraint.PkTable + " FOREIGN KEY (" + constraint.FkField + ") REFERENCES " + constraint.PkTable + "(" + constraint.PkField + ")";
+				var query = "ALTER TABLE " + constraint.FkTable + " ADD CONSTRAINT fk_" + constraint.FkTable + "_" + constraint.PkTable + " FOREIGN KEY (" + constraint.FkField + ") REFERENCES " + constraint.PkTable + "(" + constraint.PkField + ")";
 
 				using (var db = new ADODatabaseContext("TEST", constraint.DatabaseName))
 				{
@@ -364,9 +359,9 @@ namespace HelperLibrary
 			}
 		}
 
-		public static void ClearConstraints(List<ConstraintDefinition> ConstraintList)
+		public static void ClearConstraints(List<ConstraintDefinition> pConstraintList)
 		{
-			string schemaName = "dbo";
+			var schemaName = "dbo";
 
 			// delete all foreign constraints in all databases
 			using (var db = new ADODatabaseContext("TEST"))
@@ -374,18 +369,18 @@ namespace HelperLibrary
 				//_databaseList
 				foreach (var database in _databaseList)
 				{
-					var constraints = ConstraintList.Where(x => x.DatabaseName == database).ToList();
+					var constraints = pConstraintList.Where(x => x.DatabaseName == database).ToList();
 
 					foreach (var constraint in constraints)
 					{
-						string constraintName = "fk_" + constraint.FkTable + "_" + constraint.PkTable;
+						var constraintName = "fk_" + constraint.FkTable + "_" + constraint.PkTable;
 
-						if (!String.IsNullOrEmpty(constraint.SchemaName))
+						if (!string.IsNullOrEmpty(constraint.SchemaName))
 						{
 							schemaName = constraint.SchemaName;
 						}
 
-						string query = "SELECT * FROM INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS WHERE CONSTRAINT_NAME ='" + constraintName + "' AND CONSTRAINT_SCHEMA='" + schemaName + "'";
+						var query = "SELECT * FROM INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS WHERE CONSTRAINT_NAME ='" + constraintName + "' AND CONSTRAINT_SCHEMA='" + schemaName + "'";
 						using (var reader = db.ReadQuery(query))
 						{
 							while (reader.Read())
@@ -402,7 +397,7 @@ namespace HelperLibrary
 
         public static int TotalRecords(string tableName, string database)
         {
-            int results = 0;
+            var results = 0;
 
             using (var db = new ADODatabaseContext("", database))
             {
@@ -425,12 +420,12 @@ namespace HelperLibrary
 			using (var db = new ADODatabaseContext("TEST"))
 			{
 				var assembly = Assembly.GetCallingAssembly();
-				using (Stream stream = assembly.GetManifestResourceStream(filePath))
+				using (var stream = assembly.GetManifestResourceStream(filePath))
 				{
-					using (StreamReader reader = new StreamReader(stream))
+					using (var reader = new StreamReader(stream))
 					{
-						string code = reader.ReadToEnd();
-						string[] TSQLcommands = Regex.Split(code, "GO");
+						var code = reader.ReadToEnd();
+						var TSQLcommands = Regex.Split(code, "GO");
 
 						foreach (var tsqlCommand in TSQLcommands)
 						{

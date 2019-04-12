@@ -8,19 +8,13 @@ namespace HelperLibrary
 	public class ADODatabaseContext : IDisposable
 	{
 		private SqlConnection _db;
-		private List<ADOParameter> Parameters = new List<ADOParameter>();
+		private readonly List<ADOParameter> Parameters = new List<ADOParameter>();
 		public int CommandTimeout { get; set;}
 
-        private string _Database = "master";
-		public string Database
-		{
-			get
-			{
-				return _db.Database;
-			}
-		}
+        private readonly string _Database = "master";
+		public string Database => _db.Database;
 
-		public ADODatabaseContext(string connectionString)
+        public ADODatabaseContext(string connectionString)
 		{
 			CommandTimeout = 300;
 
@@ -28,14 +22,14 @@ namespace HelperLibrary
 			{
                 if (connectionString.IndexOf("database", StringComparison.InvariantCultureIgnoreCase) > -1 || connectionString.IndexOf("initial catalog", StringComparison.InvariantCultureIgnoreCase) > -1)
                 {
-                    int startPos = connectionString.IndexOf("database", StringComparison.InvariantCultureIgnoreCase);
+                    var startPos = connectionString.IndexOf("database", StringComparison.InvariantCultureIgnoreCase);
 
                     if (startPos == -1)
                     {
                         startPos = connectionString.IndexOf("initial catalog", StringComparison.InvariantCultureIgnoreCase);
                     }
 					startPos = connectionString.IndexOf("=", startPos) + 1; // move past the "=" sign, could be spaces in between
-					int endPos = connectionString.IndexOf(";", startPos);
+					var endPos = connectionString.IndexOf(";", startPos);
 
                     if (endPos == -1)
                     {
@@ -74,9 +68,9 @@ namespace HelperLibrary
             {
                 if (connectionString.Contains("database"))
                 {
-                    int startPos = connectionString.IndexOf("database");
+                    var startPos = connectionString.IndexOf("database");
                     startPos = connectionString.IndexOf("=", startPos) + 1; // move past the "=" sign, could be spaces in between
-                    int endPos = connectionString.IndexOf(";", startPos);
+                    var endPos = connectionString.IndexOf(";", startPos);
                     if (startPos > -1 && endPos > -1)
                     {
 						connectionString = connectionString.Substring(0, startPos) + _Database + connectionString.Substring(endPos, connectionString.Length - endPos);
@@ -117,11 +111,11 @@ namespace HelperLibrary
 
 		public DataSet ReadDataSet(string queryString)
 		{
-			SqlCommand myCommand = new SqlCommand(queryString, _db);
+			var myCommand = new SqlCommand(queryString, _db);
 			myCommand.CommandTimeout = CommandTimeout;
-			SqlDataAdapter datasetAdapter = new SqlDataAdapter(myCommand);
+			var datasetAdapter = new SqlDataAdapter(myCommand);
 
-			DataSet ds = new DataSet();
+			var ds = new DataSet();
 
 			foreach (var param in Parameters)
 			{
@@ -138,10 +132,9 @@ namespace HelperLibrary
 
 		public ADOReader ReadQuery(string queryString)
 		{
-			SqlCommand myCommand = new SqlCommand(queryString, _db);
-			myCommand.CommandTimeout = CommandTimeout;
+            var myCommand = new SqlCommand(queryString, _db) {CommandTimeout = CommandTimeout};
 
-			foreach (var param in Parameters)
+            foreach (var param in Parameters)
 			{
 				myCommand.Parameters.Add(param.Name, param.Type);
 				myCommand.Parameters[param.Name].Value = param.Value;
@@ -154,10 +147,9 @@ namespace HelperLibrary
 
 		public void ExecuteNonQuery(string queryString)
 		{
-			SqlCommand myCommand = new SqlCommand(queryString, _db);
-			myCommand.CommandTimeout = CommandTimeout;
+            var myCommand = new SqlCommand(queryString, _db) {CommandTimeout = CommandTimeout};
 
-			foreach (var param in Parameters)
+            foreach (var param in Parameters)
 			{
 				myCommand.Parameters.Add(param.Name, param.Type);
 				myCommand.Parameters[param.Name].Value = param.Value;
@@ -170,8 +162,7 @@ namespace HelperLibrary
 
         public int ExecuteScalar(string queryString)
         {
-            SqlCommand myCommand = new SqlCommand(queryString, _db);
-            myCommand.CommandTimeout = CommandTimeout;
+            var myCommand = new SqlCommand(queryString, _db) {CommandTimeout = CommandTimeout};
 
             foreach (var param in Parameters)
             {
@@ -185,35 +176,35 @@ namespace HelperLibrary
             return result;
         }
 
-		public void AddParameter(string Name, object Value, SqlDbType Type)
+		public void AddParameter(string name, object value, SqlDbType type)
 		{
 			Parameters.Add(new ADOParameter
 			{
-				Name = Name,
-				Value = Value,
-				Type = Type
+				Name = name,
+				Value = value,
+				Type = type
 			});
 		}
 
-		public void BulkInsert(DataTable DetailTable)
+		public void BulkInsert(DataTable detailTable)
 		{
-			using (SqlBulkCopy s = new SqlBulkCopy(_db))
+			using (var s = new SqlBulkCopy(_db))
 			{
-				s.DestinationTableName = DetailTable.TableName;
+				s.DestinationTableName = detailTable.TableName;
 				s.BulkCopyTimeout = CommandTimeout;
 
-				foreach (var column in DetailTable.Columns)
+				foreach (var column in detailTable.Columns)
 				{
 					s.ColumnMappings.Add(column.ToString(), column.ToString());
 				}
 
-				s.WriteToServer(DetailTable);
+				s.WriteToServer(detailTable);
 			}
 		}
 
 		public void ExecuteStoredProcedure(string queryString)
 		{
-			using (SqlCommand myCommand = new SqlCommand(queryString, _db))
+			using (var myCommand = new SqlCommand(queryString, _db))
 			{
 				myCommand.CommandType = CommandType.StoredProcedure;
                 myCommand.CommandTimeout = CommandTimeout;
@@ -232,7 +223,7 @@ namespace HelperLibrary
 
 		public string ExecuteStoredProcedureWReturnValue(string queryString)
 		{
-			using (SqlCommand myCommand = new SqlCommand(queryString, _db))
+			using (var myCommand = new SqlCommand(queryString, _db))
 			{
 				myCommand.CommandType = CommandType.StoredProcedure;
 
@@ -250,12 +241,12 @@ namespace HelperLibrary
 
 		public DataSet StoredProcedureSelect(string queryString)
 		{
-			using (SqlCommand myCommand = new SqlCommand(queryString, _db))
+			using (var myCommand = new SqlCommand(queryString, _db))
 			{
 				myCommand.CommandType = CommandType.StoredProcedure;
                 myCommand.CommandTimeout = CommandTimeout;
-				SqlDataAdapter DA = new SqlDataAdapter(myCommand);
-				DataSet ds = new DataSet();
+				var sqlDataAdapter = new SqlDataAdapter(myCommand);
+				var ds = new DataSet();
 
 				foreach (var param in Parameters)
 				{
@@ -265,34 +256,36 @@ namespace HelperLibrary
 
 				Parameters.Clear();
 
-				DA.Fill(ds);
+				sqlDataAdapter.Fill(ds);
 
 				return ds;
 			}
 		}
 	
-        public void BulkInsertKeepIdentityField(DataTable DetailTable)
+        public void BulkInsertKeepIdentityField(DataTable detailTable)
         {
-            using (SqlBulkCopy s = new SqlBulkCopy(_db.ConnectionString, SqlBulkCopyOptions.KeepIdentity))
+            using (var s = new SqlBulkCopy(_db.ConnectionString, SqlBulkCopyOptions.KeepIdentity))
             {
-                s.DestinationTableName = DetailTable.TableName;
+                s.DestinationTableName = detailTable.TableName;
                 s.BulkCopyTimeout = CommandTimeout; // set this for overkill;
 
-				foreach (var column in DetailTable.Columns)
+				foreach (var column in detailTable.Columns)
 				{
 					s.ColumnMappings.Add(column.ToString(), column.ToString());
 				}
 
-                s.WriteToServer(DetailTable);
+                s.WriteToServer(detailTable);
             }
         }
 
-        public void InsertDataColumn(DataTable DetailTable, string columnName, string dataType)
+        public void InsertDataColumn(DataTable detailTable, string columnName, string dataType)
         {
-            DataColumn dataColumn = new DataColumn();
-            dataColumn.DataType = Type.GetType(dataType);
-            dataColumn.ColumnName = columnName;
-            DetailTable.Columns.Add(dataColumn);
+            var dataColumn = new DataColumn
+            {
+                DataType = Type.GetType(dataType),
+                ColumnName = columnName
+            };
+            detailTable.Columns.Add(dataColumn);
         }
     }
 }

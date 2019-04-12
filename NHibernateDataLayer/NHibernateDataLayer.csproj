@@ -121,19 +121,10 @@
     <Compile Include="sampledata\Constraints\sampledataConstraints.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="APIUniversity\Views\" />
     <Folder Include="facultydata\Views\" />
-    <Folder Include="APIUniversity\Constraints" />
-    <Folder Include="APIUniversity\StoredProcedures" />
-    <Folder Include="APIUniversity\Tables" />
-    <Folder Include="APIUniversity\Views" />
-    <Folder Include="studentdata\Constraints" />
-    <Folder Include="studentdata\StoredProcedures" />
-    <Folder Include="studentdata\Tables" />
-    <Folder Include="studentdata\Views" />
-    <Folder Include="sampledata\Constraints" />
-    <Folder Include="sampledata\StoredProcedures" />
-    <Folder Include="sampledata\Tables" />
-    <Folder Include="sampledata\Views" />
+    <Folder Include="studentdata\StoredProcedures\" />
+    <Folder Include="studentdata\Views\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HelperLibrary\HelperLibrary.csproj">
