@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Data.SqlClient;
 
 namespace HelperLibrary
@@ -10,29 +7,11 @@ namespace HelperLibrary
     {
         private SqlDataReader dataReader = null;
 
-        public SqlDataReader Data
-        {
-            get
-            {
-                return dataReader;
-            }
-        }
+        public SqlDataReader Data => dataReader;
 
-        public bool HasRows
-        {
-            get
-            {
-                return dataReader.HasRows;
-            }
-        }
+        public bool HasRows => dataReader.HasRows;
 
-        public object this[string index]
-        {
-            get
-            {
-                return dataReader[index];
-            }
-        }
+        public object this[string index] => dataReader[index];
 
         public bool IsDBNull(int index)
         {
@@ -50,10 +29,8 @@ namespace HelperLibrary
             {
                 return null;
             }
-            else
-            {
-                return dataReader[fieldName].ToString();
-            }
+
+            return dataReader[fieldName].ToString();
         }
 
         public void Close()
@@ -85,15 +62,12 @@ namespace HelperLibrary
 
         protected virtual void Dispose(bool disposing)
         {
-            if (disposing)
-            {
-                if (dataReader != null)
-                {
-                    dataReader.Close();
-                    dataReader.Dispose();
-                    dataReader = null;
-                }
-            }
+            if (!disposing) return;
+            if (dataReader == null) return;
+
+            dataReader.Close();
+            dataReader.Dispose();
+            dataReader = null;
         }
     }
 }

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 using System.Xml;
 
 namespace HelperLibrary
@@ -12,9 +8,9 @@ namespace HelperLibrary
 	{
 		public List<FieldDefinition> Fields = new List<FieldDefinition>();
 		private string _tableName;
-		private string _connectionString;
-		private string _databaseName;
-        private string _schemaName;
+		private readonly string _connectionString;
+		private readonly string _databaseName;
+        private readonly string _schemaName;
 		private string _IdentityFieldName;
 		private bool _DataContainsPrimaryKey;
 
@@ -27,7 +23,7 @@ namespace HelperLibrary
 
 		public void InsertData(XmlNode e)
 		{
-			_tableName = e.Name.ToString();
+			_tableName = e.Name;
 
 			_IdentityFieldName = ReadTableIdentityFieldName();
 			_DataContainsPrimaryKey = false;
@@ -41,20 +37,18 @@ namespace HelperLibrary
 			{
                 foreach (XmlNode fields in children)
 				{
-					string fieldName = fields.Name.ToString().ToLower();
-                    string fieldData = fields.InnerText;
+					var fieldName = fields.Name.ToLower();
+                    var fieldData = fields.InnerText;
 
-					var record = Fields.Where(x => x.Name.ToLower() == fieldName).FirstOrDefault();
-					if (record != null)
-					{
-						record.Value = fieldData;
+					var record = Fields.FirstOrDefault(x => x.Name.ToLower() == fieldName);
+                    if (record == null) continue;
+                    record.Value = fieldData;
 
-						if (fieldName.ToLower() == _IdentityFieldName.ToLower())
-						{
-							_DataContainsPrimaryKey = true;
-						}
-					}
-				}
+                    if (fieldName.ToLower() == _IdentityFieldName.ToLower())
+                    {
+                        _DataContainsPrimaryKey = true;
+                    }
+                }
 			}
 			else
 			{
@@ -62,20 +56,18 @@ namespace HelperLibrary
 				var childElements = e.Attributes;
                 foreach (XmlAttribute fields in childElements)
 				{
-					string fieldName = fields.Name.ToString().ToLower();
-					string fieldData = fields.Value;
+					var fieldName = fields.Name.ToLower();
+					var fieldData = fields.Value;
 
-					var record = Fields.Where(x => x.Name.ToLower() == fieldName).FirstOrDefault();
-					if (record != null)
-					{
-						record.Value = fieldData;
+					var record = Fields.FirstOrDefault(x => x.Name.ToLower() == fieldName);
+                    if (record == null) continue;
+                    record.Value = fieldData;
 
-						if (fieldName.ToLower() == _IdentityFieldName.ToLower())
-						{
-							_DataContainsPrimaryKey = true;
-						}
-					}
-				}
+                    if (fieldName.ToLower() == _IdentityFieldName.ToLower())
+                    {
+                        _DataContainsPrimaryKey = true;
+                    }
+                }
 			}
 
 
@@ -84,7 +76,7 @@ namespace HelperLibrary
 
 		private void BuildQueryInsertData()
 		{
-			string query = "";
+			var query = "";
 
 			foreach (var field in Fields)
 			{
@@ -152,17 +144,15 @@ namespace HelperLibrary
 					string fieldName = fieldItem.Name.ToLower();
 					string fieldData = fieldItem.Value;
 
-					var record = Fields.Where(x => x.Name.ToLower() == fieldName).FirstOrDefault();
-					if (record != null)
-					{
-						record.Value = fieldData;
+					var record = Fields.FirstOrDefault(x => x.Name.ToLower() == fieldName);
+                    if (record == null) continue;
+                    record.Value = fieldData;
 
-						if (fieldName.ToLower() == _IdentityFieldName.ToLower())
-						{
-							_DataContainsPrimaryKey = true;
-						}
-					}
-				}
+                    if (fieldName.ToLower() == _IdentityFieldName.ToLower())
+                    {
+                        _DataContainsPrimaryKey = true;
+                    }
+                }
 
 				BuildQueryInsertData();
 			}
@@ -173,7 +163,7 @@ namespace HelperLibrary
 			Fields.Clear();
             using (var db = new ADODatabaseContext(_connectionString))
 			{
-				string columnQuery = "SELECT * FROM " + _databaseName + ".INFORMATION_SCHEMA.columns WHERE TABLE_NAME='" + _tableName + "'";
+				var columnQuery = "SELECT * FROM " + _databaseName + ".INFORMATION_SCHEMA.columns WHERE TABLE_NAME='" + _tableName + "'";
 				using (var reader = db.ReadQuery(columnQuery))
 				{
 					while (reader.Read())
@@ -190,7 +180,7 @@ namespace HelperLibrary
 
 		private string ReadTableIdentityFieldName()
 		{
-			string query = @"
+			var query = @"
 					SELECT * FROM " + _databaseName + @".sys.identity_columns AS a 
 					INNER JOIN " + _databaseName + @".sys.objects AS b ON a.object_id=b.object_id 
 					WHERE 

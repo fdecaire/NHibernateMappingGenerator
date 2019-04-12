@@ -12,7 +12,7 @@ namespace HelperLibrary
 
 		public static string ConnectionString(string connectionName, string databaseName, string modelName, string userName, string password)
 		{
-			bool integratedSecurity = (userName == "");
+			var integratedSecurity = (userName == "");
 
 			if (UnitTestHelpers.IsInUnitTest)
 			{
@@ -32,23 +32,21 @@ namespace HelperLibrary
 					Password = password
 				}.ConnectionString;
 			}
-			else
-			{
-				return new EntityConnectionStringBuilder
-				{
-					Metadata = "res://*/" + modelName + ".csdl|res://*/" + modelName + ".ssdl|res://*/" + modelName + ".msl",
-					Provider = "System.Data.SqlClient",
-					ProviderConnectionString = new SqlConnectionStringBuilder
-					{
-						MultipleActiveResultSets = true,
-						InitialCatalog = databaseName,
-						DataSource = connectionName,
-						IntegratedSecurity = integratedSecurity,
-						UserID = userName,
-						Password = password
-					}.ConnectionString
-				}.ConnectionString;
-			}
-		}
+
+            return new EntityConnectionStringBuilder
+            {
+                Metadata = "res://*/" + modelName + ".csdl|res://*/" + modelName + ".ssdl|res://*/" + modelName + ".msl",
+                Provider = "System.Data.SqlClient",
+                ProviderConnectionString = new SqlConnectionStringBuilder
+                {
+                    MultipleActiveResultSets = true,
+                    InitialCatalog = databaseName,
+                    DataSource = connectionName,
+                    IntegratedSecurity = integratedSecurity,
+                    UserID = userName,
+                    Password = password
+                }.ConnectionString
+            }.ConnectionString;
+        }
 	}
 }

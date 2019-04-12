@@ -12,12 +12,12 @@ namespace HelperLibrary
 			dataColumn.ColumnName = fieldName;
 			dataTable.Columns.Add(dataColumn);
 		}
-		public static object ConvertToDBNullDate(this string DateTimeString)
+		public static object ConvertToDBNullDate(this string dateTimeString)
 		{
-			if (!String.IsNullOrEmpty(DateTimeString))
+			if (!String.IsNullOrEmpty(dateTimeString))
 			{
 				DateTime tempDate;
-				if (DateTime.TryParse(DateTimeString, out tempDate))
+				if (DateTime.TryParse(dateTimeString, out tempDate))
 				{
 					return tempDate;
 				}
@@ -26,12 +26,12 @@ namespace HelperLibrary
 			return DBNull.Value;
 		}
 
-		public static object ConvertToDBNullDouble(this string DoubleString)
+		public static object ConvertToDBNullDouble(this string doubleString)
 		{
-			if (!String.IsNullOrEmpty(DoubleString))
+			if (!string.IsNullOrEmpty(doubleString))
 			{
-				Double tempDouble;
-				if (Double.TryParse(DoubleString, out tempDouble))
+				double tempDouble;
+				if (double.TryParse(doubleString, out tempDouble))
 				{
 					return tempDouble;
 				}
