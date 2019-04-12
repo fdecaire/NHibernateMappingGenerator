@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.IO;
 using HelperLibrary;
 using System.Xml;
@@ -119,13 +115,13 @@ namespace NHibernateMappingGenerator
 		private void CreateWrapperMappings()
 		{
 			Directory.CreateDirectory(RootDirectory + DatabaseName + "\\Wrappers");
-			WrapperMappings wrapperMappings = new WrapperMappings();
+			var wrapperMappings = new WrapperMappings();
 
 
-			string query = "SELECT * FROM " + DatabaseName + ".INFORMATION_SCHEMA.tables";
-			using (StreamWriter sessionWrapperFile = new StreamWriter(RootDirectory + DatabaseName + "\\Wrappers\\SessionWrapper.cs"))
+			var query = "SELECT * FROM " + DatabaseName + ".INFORMATION_SCHEMA.tables";
+			using (var sessionWrapperFile = new StreamWriter(RootDirectory + DatabaseName + "\\Wrappers\\SessionWrapper.cs"))
 			{
-				using (StreamWriter statelessSessionWrapperFile = new StreamWriter(RootDirectory + DatabaseName + "\\Wrappers\\StatelessSessionWrapper.cs"))
+				using (var statelessSessionWrapperFile = new StreamWriter(RootDirectory + DatabaseName + "\\Wrappers\\StatelessSessionWrapper.cs"))
 				{
 					sessionWrapperFile.Write(wrapperMappings.EmitHeader("SessionWrapper"));
 					statelessSessionWrapperFile.Write(wrapperMappings.EmitHeader("StatelessSessionWrapper"));
@@ -135,7 +131,7 @@ namespace NHibernateMappingGenerator
 						var reader = db.ReadQuery(query);
 						while (reader.Read())
 						{
-							string tableName = reader["TABLE_NAME"].ToString();
+							var tableName = reader["TABLE_NAME"].ToString();
 							sessionWrapperFile.Write(wrapperMappings.EmitCode(DatabaseName, tableName));
 							statelessSessionWrapperFile.Write(wrapperMappings.EmitCode(DatabaseName, tableName));
 						}
@@ -155,10 +151,10 @@ namespace NHibernateMappingGenerator
 			//TODO: these mappings will be used by unit tests to generate the tables in the database so NHibernate is not needed
 			Directory.CreateDirectory(RootDirectory + DatabaseName + "\\TableGeneratorCode");
 
-			TableGeneratorMappings tableGeneratorMappings = new TableGeneratorMappings(ConnectionString, DatabaseName);
-			string result = tableGeneratorMappings.EmitCode();
+			var tableGeneratorMappings = new TableGeneratorMappings(ConnectionString, DatabaseName);
+			var result = tableGeneratorMappings.EmitCode();
 
-			using (StreamWriter file = new StreamWriter(RootDirectory + DatabaseName + "\\TableGeneratorCode\\" + DatabaseName + "TableGeneratorCode.cs"))
+			using (var file = new StreamWriter(RootDirectory + DatabaseName + "\\TableGeneratorCode\\" + DatabaseName + "TableGeneratorCode.cs"))
 			{
 				file.Write(result);
 			}
@@ -170,7 +166,7 @@ namespace NHibernateMappingGenerator
 		{
 			// delete any existing table mappings first (in case a table was deleted)
 			//TODO: refactor this
-			int foundIndex = DeletedFiles.IndexOf(RootDirectory + DatabaseName + "\\" + tableSPView + "\\" + Name + ".cs");
+			var foundIndex = DeletedFiles.IndexOf(RootDirectory + DatabaseName + "\\" + tableSPView + "\\" + Name + ".cs");
 			if (foundIndex > -1)
 			{
 				DeletedFiles.RemoveAt(foundIndex);
@@ -186,9 +182,9 @@ namespace NHibernateMappingGenerator
 		private void CreateTable(string tableName)
 		{
 			// create cs file named same as table
-			using (StreamWriter file = new StreamWriter(RootDirectory + DatabaseName + "\\Tables\\" + tableName + ".cs"))
+			using (var file = new StreamWriter(RootDirectory + DatabaseName + "\\Tables\\" + tableName + ".cs"))
 			{
-				TableMappings tableMappings = new TableMappings(ConnectionString, DatabaseName, tableName);
+				var tableMappings = new TableMappings(ConnectionString, DatabaseName, tableName);
 				file.Write(tableMappings.EmitCode());
 			}
 
@@ -199,8 +195,8 @@ namespace NHibernateMappingGenerator
 		{
 			Directory.CreateDirectory(RootDirectory + DatabaseName + "\\StoredProcedures");
 
-			bool noStoredProceduresCreated = true;
-			string query = "SELECT ROUTINE_NAME FROM " + DatabaseName + ".information_schema.routines WHERE routine_type = 'PROCEDURE'";
+			var noStoredProceduresCreated = true;
+			var query = "SELECT ROUTINE_NAME FROM " + DatabaseName + ".information_schema.routines WHERE routine_type = 'PROCEDURE'";
 			using (var db = new ADODatabaseContext(ConnectionString))
 			{
 				var reader = db.ReadQuery(query);
@@ -219,9 +215,9 @@ namespace NHibernateMappingGenerator
 
 		public void CreateStoredProcedure(string storedProcedureName)
 		{
-			using (StreamWriter file = new StreamWriter(RootDirectory + DatabaseName + "\\StoredProcedures\\" + storedProcedureName + ".cs"))
+			using (var file = new StreamWriter(RootDirectory + DatabaseName + "\\StoredProcedures\\" + storedProcedureName + ".cs"))
 			{
-				StoredProcedureMappings storedProcedureMappings = new StoredProcedureMappings(ConnectionString, DatabaseName, storedProcedureName);
+				var storedProcedureMappings = new StoredProcedureMappings(ConnectionString, DatabaseName, storedProcedureName);
 
 				file.Write(storedProcedureMappings.EmitCode());
 			}
@@ -233,8 +229,8 @@ namespace NHibernateMappingGenerator
 		{
 			Directory.CreateDirectory(RootDirectory + DatabaseName + "\\Views");
 
-			bool noViewsCreated = true;
-			string query = "SELECT TABLE_NAME FROM " + DatabaseName + ".information_schema.views";
+			var noViewsCreated = true;
+			var query = "SELECT TABLE_NAME FROM " + DatabaseName + ".information_schema.views";
 			using (var db = new ADODatabaseContext(ConnectionString))
 			{
 				var reader = db.ReadQuery(query);
@@ -254,9 +250,9 @@ namespace NHibernateMappingGenerator
 
 		public void CreateView(string viewName)
 		{
-			using (StreamWriter file = new StreamWriter(RootDirectory + DatabaseName + "\\Views\\" + viewName + ".cs"))
+			using (var file = new StreamWriter(RootDirectory + DatabaseName + "\\Views\\" + viewName + ".cs"))
 			{
-				ViewMappings viewMappings = new ViewMappings(ConnectionString, DatabaseName, viewName);
+				var viewMappings = new ViewMappings(ConnectionString, DatabaseName, viewName);
 
 				file.Write(viewMappings.EmitCode());
 			}
@@ -268,10 +264,10 @@ namespace NHibernateMappingGenerator
 		{
 			Directory.CreateDirectory(RootDirectory + DatabaseName + "\\Constraints");
 
-			ConstraintMappings constraintMappings = new ConstraintMappings(ConnectionString, DatabaseName);
-			string result = constraintMappings.EmitCode();
+			var constraintMappings = new ConstraintMappings(ConnectionString, DatabaseName);
+			var result = constraintMappings.EmitCode();
 
-			using (StreamWriter file = new StreamWriter(RootDirectory + DatabaseName + "\\Constraints\\" + DatabaseName + "Constraints.cs"))
+			using (var file = new StreamWriter(RootDirectory + DatabaseName + "\\Constraints\\" + DatabaseName + "Constraints.cs"))
 			{
 				file.Write(result);
 			}
@@ -282,7 +278,7 @@ namespace NHibernateMappingGenerator
 		private void ModifyVSProjectFile()
 		{
 			// create xml code inside .csproj file
-			string projectFileName = "";
+			var projectFileName = "";
 
 			// search for a project file in the rootdirectory and then modify the proj file.
 			// otherwise, just create the files there but ignore this section
@@ -300,12 +296,12 @@ namespace NHibernateMappingGenerator
 				return;
 			}
 
-			XmlDocument doc = new XmlDocument();
+			var doc = new XmlDocument();
 			doc.Load(projectFileName);
 
 			var nsmgr = new XmlNamespaceManager(doc.NameTable);
 			nsmgr.AddNamespace("a", "http://schemas.microsoft.com/developer/msbuild/2003");
-			XmlNodeList itemGroupNodes = doc.SelectNodes("//a:Project/a:ItemGroup", nsmgr);
+			var itemGroupNodes = doc.SelectNodes("//a:Project/a:ItemGroup", nsmgr);
 
 			DeleteNodeContainingChildName(itemGroupNodes, "Folder");
 			DeleteNodeContainingChildName(itemGroupNodes, "Compile");
@@ -317,12 +313,12 @@ namespace NHibernateMappingGenerator
 
 		private void AddNewNodes(XmlDocument doc, XmlNamespaceManager nsmgr, XmlNodeList itemGroupNodes)
 		{
-			bool containsFolderItemGroup = false;
-			bool containsCompileItemGroup = false;
+			var containsFolderItemGroup = false;
+			var containsCompileItemGroup = false;
 
 			foreach (XmlNode itemGroupNode in itemGroupNodes)
 			{
-				XmlNodeList childNodes = itemGroupNode.ChildNodes;
+				var childNodes = itemGroupNode.ChildNodes;
 
 				foreach (XmlNode childNode in childNodes)
 				{
@@ -330,7 +326,7 @@ namespace NHibernateMappingGenerator
 					{
 						containsFolderItemGroup = true;
 
-						XmlAttribute includeAttribute = childNode.Attributes["Include"];
+						var includeAttribute = childNode.Attributes["Include"];
 
 						if (includeAttribute != null)
 						{
@@ -345,7 +341,7 @@ namespace NHibernateMappingGenerator
 					{
 						containsCompileItemGroup = true;
 
-						XmlAttribute includeAttribute = childNode.Attributes["Include"];
+						var includeAttribute = childNode.Attributes["Include"];
 
 						foreach (var item in AddedFiles)
 						{
@@ -363,8 +359,8 @@ namespace NHibernateMappingGenerator
 			// need to handle situation where the Compile or folder itemgroups do not exist
 			if (!containsFolderItemGroup)
 			{
-				XmlNodeList projectNode = doc.SelectNodes("//a:Project", nsmgr);
-				XmlNode itemGroupNode = doc.CreateNode(XmlNodeType.Element, "ItemGroup", "http://schemas.microsoft.com/developer/msbuild/2003");
+				var projectNode = doc.SelectNodes("//a:Project", nsmgr);
+				var itemGroupNode = doc.CreateNode(XmlNodeType.Element, "ItemGroup", "http://schemas.microsoft.com/developer/msbuild/2003");
 				projectNode[0].AppendChild(itemGroupNode);
 
 				foreach (var item in folderList)
@@ -375,8 +371,8 @@ namespace NHibernateMappingGenerator
 
 			if (!containsCompileItemGroup)
 			{
-				XmlNodeList projectNode = doc.SelectNodes("//a:Project", nsmgr);
-				XmlNode itemGroupNode = doc.CreateNode(XmlNodeType.Element, "ItemGroup", "http://schemas.microsoft.com/developer/msbuild/2003");
+				var projectNode = doc.SelectNodes("//a:Project", nsmgr);
+				var itemGroupNode = doc.CreateNode(XmlNodeType.Element, "ItemGroup", "http://schemas.microsoft.com/developer/msbuild/2003");
 				projectNode[0].AppendChild(itemGroupNode);
 
 				foreach (var item in AddedFiles)
@@ -400,17 +396,17 @@ namespace NHibernateMappingGenerator
 
 		private void DeleteNodeContainingChildName(XmlNodeList itemGroupNodes, string childGroupName)
 		{
-			List<XmlNode> toBeRemoved = new List<XmlNode>();
+			var toBeRemoved = new List<XmlNode>();
 
 			foreach (XmlNode itemGroupNode in itemGroupNodes)
 			{
-				XmlNodeList childNodes = itemGroupNode.ChildNodes;
+				var childNodes = itemGroupNode.ChildNodes;
 
 				foreach (XmlNode childNode in childNodes)
 				{
 					if (childNode.Name == childGroupName)
 					{
-						XmlAttribute includeAttribute = childNode.Attributes["Include"];
+						var includeAttribute = childNode.Attributes["Include"];
 
 						if (includeAttribute != null && includeAttribute.Value != null && includeAttribute.Value.Contains(DatabaseName + "\\"))
 						{
@@ -430,8 +426,8 @@ namespace NHibernateMappingGenerator
 
 		private XmlNode CreateChildNode(XmlDocument doc, string elementName, string attributeValue)
 		{
-			XmlNode folderNode = doc.CreateNode(XmlNodeType.Element, elementName, "http://schemas.microsoft.com/developer/msbuild/2003");
-			XmlAttribute xKey = doc.CreateAttribute("Include");
+			var folderNode = doc.CreateNode(XmlNodeType.Element, elementName, "http://schemas.microsoft.com/developer/msbuild/2003");
+			var xKey = doc.CreateAttribute("Include");
 			xKey.Value = attributeValue;
 			folderNode.Attributes.Append(xKey);
 

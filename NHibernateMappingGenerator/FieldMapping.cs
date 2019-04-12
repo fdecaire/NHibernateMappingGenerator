@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace NHibernateMappingGenerator
 {
@@ -91,7 +88,7 @@ namespace NHibernateMappingGenerator
 						customType = ".CustomType(\"StringClob\")";
 					}
 					customType += ".CustomSqlType(\"" + DataType + " (" + StringLength + ")\")";
-					lengthExtension = String.Format(".Length({0})", stringLengthForDotNet);
+					lengthExtension = string.Format(".Length({0})", stringLengthForDotNet);
 					break;
 				case "text":
 					customType = ".CustomType(\"StringClob\").CustomSqlType(\"text\")";
@@ -104,7 +101,7 @@ namespace NHibernateMappingGenerator
 				case "char":
 				case "nchar":
 					customType = ".CustomSqlType(\"" + DataType + " (" + StringLength + ")\")";
-					lengthExtension = String.Format(".Length({0})", stringLengthForDotNet);
+					lengthExtension = string.Format(".Length({0})", stringLengthForDotNet);
 					break;
 				case "money":
 					customType = ".CustomSqlType(\"money\")";

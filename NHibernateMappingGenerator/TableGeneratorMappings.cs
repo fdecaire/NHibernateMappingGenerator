@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Text;
-using System.Threading.Tasks;
 using HelperLibrary;
 
 namespace NHibernateMappingGenerator
@@ -20,20 +17,20 @@ namespace NHibernateMappingGenerator
 
 		private List<string> ReadPrimaryKeyList(string tableName)
 		{
-			List<string> KeyList = new List<string>();
+			var keyList = new List<string>();
 
-			string query = "SELECT * FROM " + _databaseName + ".INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE table_name='" + tableName + "' AND CONSTRAINT_NAME LIKE 'PK_%' ORDER BY ORDINAL_POSITION";
+			var query = "SELECT * FROM " + _databaseName + ".INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE table_name='" + tableName + "' AND CONSTRAINT_NAME LIKE 'PK_%' ORDER BY ORDINAL_POSITION";
 
 			using (var db = new ADODatabaseContext(_connectionString))
 			{
 				var reader = db.ReadQuery(query);
 				while (reader.Read())
 				{
-					KeyList.Add(reader["COLUMN_NAME"].ToString());
+					keyList.Add(reader["COLUMN_NAME"].ToString());
 				}
 			}
 
-			return KeyList;
+			return keyList;
 		}
 
 		public string EmitCode()
@@ -81,7 +78,7 @@ namespace NHibernateMappingGenerator
 		private string EmitTableGenerateCode(string tableName)
 		{
 			var @out = new StringBuilder();
-			bool firstTime = true;
+			var firstTime = true;
 
 			@out.Append("Name=\"" + tableName + "\", ");
 
@@ -186,10 +183,10 @@ namespace NHibernateMappingGenerator
 		{
 			using (var db = new ADODatabaseContext(_connectionString))
 			{
-				string queryString = "SELECT * " +
-														 "FROM " + _databaseName + ".sys.identity_columns AS a INNER JOIN " + _databaseName + ".sys.objects AS b ON a.object_id=b.object_id " +
-														 "WHERE LOWER(b.name)='" + tableName.ToLower().Trim() + "' AND LOWER(a.name)='" +
-														 fieldName.ToLower().Trim() + "' AND type='U'";
+				var queryString = "SELECT * " +
+								 "FROM " + _databaseName + ".sys.identity_columns AS a INNER JOIN " + _databaseName + ".sys.objects AS b ON a.object_id=b.object_id " +
+								 "WHERE LOWER(b.name)='" + tableName.ToLower().Trim() + "' AND LOWER(a.name)='" +
+								 fieldName.ToLower().Trim() + "' AND type='U'";
 
 				using (var columnReader = db.ReadQuery(queryString))
 				{
