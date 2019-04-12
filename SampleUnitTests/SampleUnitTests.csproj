@@ -37,12 +37,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>3rdPartyDLLs\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>3rdPartyDLLs\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="FluentNHibernate, Version=1.4.0.0, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -57,6 +57,7 @@
       <HintPath>3rdPartyDLLs\NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.XML" />
   </ItemGroup>
@@ -97,10 +98,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="3rdPartyDLLs\EntityFramework.dll" />
-    <Content Include="3rdPartyDLLs\EntityFramework.SqlServer.dll" />
-    <Content Include="3rdPartyDLLs\EntityFramework.SqlServer.xml" />
-    <Content Include="3rdPartyDLLs\EntityFramework.xml" />
     <Content Include="3rdPartyDLLs\FluentNHibernate.dll" />
     <Content Include="3rdPartyDLLs\FluentNHibernate.xml" />
     <Content Include="3rdPartyDLLs\Iesi.Collections.dll" />
@@ -117,6 +114,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

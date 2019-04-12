@@ -17,6 +17,7 @@ namespace NHibernateMappingGenerator
 		{
 			// lookup all the data severs on this network and allow the user to select one
             // make sure SQL Browser service is running for this to work
+            return;
 			DataTable servers = SqlDataSourceEnumerator.Instance.GetDataSources();
 			foreach (DataRow row in servers.Rows)
 			{
