@@ -83,6 +83,7 @@
             this.lstServers.Name = "lstServers";
             this.lstServers.Size = new System.Drawing.Size(432, 21);
             this.lstServers.TabIndex = 2;
+            this.lstServers.Visible = false;
             this.lstServers.SelectedIndexChanged += new System.EventHandler(this.lstServers_SelectedIndexChanged);
             // 
             // txtServerName
