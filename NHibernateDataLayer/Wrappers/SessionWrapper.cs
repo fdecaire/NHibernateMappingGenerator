@@ -1,16 +1,18 @@
-﻿using System;
-using System.Data;
-using System.Linq;
-using System.Linq.Expressions;
-using NHibernate;
+﻿using NHibernate;
 using NHibernate.Engine;
-using NHibernate.Linq;
 using NHibernate.Stat;
 using NHibernate.Type;
+using System;
+using System.Data;
+using System.Data.Common;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace NHibernateDataLayer
 {
-	public partial class SessionWrapper : ISession
+    public partial class SessionWrapper : ISession
 	{
 		private ISession _Session;
 
@@ -37,11 +39,6 @@ namespace NHibernateDataLayer
 		public void Reconnect()
 		{
 			_Session.Reconnect();
-		}
-
-		public void Reconnect(IDbConnection connection)
-		{
-			_Session.Reconnect(connection);
 		}
 
 		public IDbConnection Close()
@@ -197,16 +194,6 @@ namespace NHibernateDataLayer
 		public void Persist(string entityName, object obj)
 		{
 			_Session.Persist(entityName, obj);
-		}
-
-		public object SaveOrUpdateCopy(object obj)
-		{
-			return _Session.SaveOrUpdateCopy(obj);
-		}
-
-		public object SaveOrUpdateCopy(object obj, object id)
-		{
-			return _Session.SaveOrUpdateCopy(obj, id);
 		}
 
 		public void Delete(object obj)
@@ -414,11 +401,6 @@ namespace NHibernateDataLayer
 			return _Session.GetSession(entityMode);
 		}
 
-		public EntityMode ActiveEntityMode
-		{
-			get { return _Session.ActiveEntityMode; }
-		}
-
 		public FlushMode FlushMode
 		{
 			get { return _Session.FlushMode; }
@@ -467,9 +449,286 @@ namespace NHibernateDataLayer
 			get { return _Session.Statistics; }
 		}
 
-		public bool IsTypeMapped(Type t)
+        DbConnection ISession.Connection => throw new NotImplementedException();
+
+        public bool IsTypeMapped(Type t)
 		{
 			return SessionFactory.GetClassMetadata(t) != null;
 		}
-	}
+
+        public Task FlushAsync(CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> IsDirtyAsync(CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task EvictAsync(object obj, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<object> LoadAsync(Type theType, object id, LockMode lockMode, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<object> LoadAsync(string entityName, object id, LockMode lockMode, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<object> LoadAsync(Type theType, object id, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<T> LoadAsync<T>(object id, LockMode lockMode, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<T> LoadAsync<T>(object id, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<object> LoadAsync(string entityName, object id, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task LoadAsync(object obj, object id, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task ReplicateAsync(object obj, ReplicationMode replicationMode, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task ReplicateAsync(string entityName, object obj, ReplicationMode replicationMode, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<object> SaveAsync(object obj, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task SaveAsync(object obj, object id, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<object> SaveAsync(string entityName, object obj, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task SaveAsync(string entityName, object obj, object id, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task SaveOrUpdateAsync(object obj, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task SaveOrUpdateAsync(string entityName, object obj, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task SaveOrUpdateAsync(string entityName, object obj, object id, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateAsync(object obj, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateAsync(object obj, object id, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateAsync(string entityName, object obj, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateAsync(string entityName, object obj, object id, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<object> MergeAsync(object obj, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<object> MergeAsync(string entityName, object obj, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<T> MergeAsync<T>(T entity, CancellationToken cancellationToken = default) where T : class
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<T> MergeAsync<T>(string entityName, T entity, CancellationToken cancellationToken = default) where T : class
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task PersistAsync(object obj, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task PersistAsync(string entityName, object obj, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteAsync(object obj, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteAsync(string entityName, object obj, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> DeleteAsync(string query, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> DeleteAsync(string query, object value, IType type, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> DeleteAsync(string query, object[] values, IType[] types, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task LockAsync(object obj, LockMode lockMode, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task LockAsync(string entityName, object obj, LockMode lockMode, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task RefreshAsync(object obj, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task RefreshAsync(object obj, LockMode lockMode, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IQuery> CreateFilterAsync(object collection, string queryString, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<object> GetAsync(Type clazz, object id, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<object> GetAsync(Type clazz, object id, LockMode lockMode, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<object> GetAsync(string entityName, object id, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<T> GetAsync<T>(object id, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<T> GetAsync<T>(object id, LockMode lockMode, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<string> GetEntityNameAsync(object obj, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ISharedSessionBuilder SessionWithOptions()
+        {
+            throw new NotImplementedException();
+        }
+
+        DbConnection ISession.Disconnect()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Reconnect(DbConnection connection)
+        {
+            throw new NotImplementedException();
+        }
+
+        DbConnection ISession.Close()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Save(string entityName, object obj, object id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SaveOrUpdate(string entityName, object obj, object id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(string entityName, object obj, object id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void JoinTransaction()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<T> Query<T>()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<T> Query<T>(string entityName)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

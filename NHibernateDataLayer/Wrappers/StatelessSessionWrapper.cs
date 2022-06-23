@@ -1,14 +1,16 @@
-﻿using System;
+﻿using NHibernate;
+using NHibernate.Engine;
+using System;
 using System.Data;
+using System.Data.Common;
 using System.Linq;
 using System.Linq.Expressions;
-using NHibernate;
-using NHibernate.Engine;
-using NHibernate.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace NHibernateDataLayer
 {
-	public partial class StatelessSessionWrapper : IStatelessSession
+    public partial class StatelessSessionWrapper : IStatelessSession
 	{
 		private readonly IStatelessSession _Session;
 
@@ -192,9 +194,96 @@ namespace NHibernateDataLayer
 			get { return _Session.IsConnected; }
 		}
 
-		public bool IsTypeMapped(Type t)
+        DbConnection IStatelessSession.Connection => throw new NotImplementedException();
+
+        public bool IsTypeMapped(Type t)
 		{
 			return GetSessionImplementation().Factory.GetClassMetadata(t) != null;
 		}
-	}
+
+        public Task<object> InsertAsync(object entity, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<object> InsertAsync(string entityName, object entity, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateAsync(object entity, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateAsync(string entityName, object entity, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteAsync(object entity, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteAsync(string entityName, object entity, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<object> GetAsync(string entityName, object id, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<T> GetAsync<T>(object id, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<object> GetAsync(string entityName, object id, LockMode lockMode, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<T> GetAsync<T>(object id, LockMode lockMode, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task RefreshAsync(object entity, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task RefreshAsync(string entityName, object entity, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task RefreshAsync(object entity, LockMode lockMode, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task RefreshAsync(string entityName, object entity, LockMode lockMode, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void JoinTransaction()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<T> Query<T>()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<T> Query<T>(string entityName)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
